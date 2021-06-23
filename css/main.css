@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+   height: 100%;
+}
+
+/* .vue-app {  
+} */
+
+.homepage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100%;
+    min-height: 100%;
+    background-color: lightskyblue;
+}
+
+.homepage .header {
+    /* background-color: lightyellow; */
+}
+
+.homepage .main{
+    flex-grow: 1;
+}
+
+.homepage .footer {
+    /* background-color: lightsteelblue; */
+}
