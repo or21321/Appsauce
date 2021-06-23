@@ -2,6 +2,8 @@ import emailHeader from "../cmps/email-header.js"
 // import { router } from "../../../routes.js"
 import emailList from "../cmps/email-list.js"
 import { emailService } from "../services/email-service.js"
+// import emailDetails from "./email-details.js"
+import { eventBus } from "../../../services/event-bus-service.js"
 
 export default {
     template: `
@@ -16,8 +18,10 @@ export default {
                     <p>Sent mail</p>
                     <p>Drafts</p>
                 </div >
-                    <!-- <router-view></router-view> -->
-                    <email-list v-if="emails" :emails="emails"></email-list>
+                <!-- ?better way? -->
+                    <router-view v-if="emails" :emails="emails"></router-view>
+                    <!-- <router-view v-else></router-view> -->
+                    <!-- <email-list v-if="emails" :emails="emails"></email-list> -->
                 </div>
             <div class="email-footer">
             <span>Cofferights</span>
@@ -26,12 +30,14 @@ export default {
     `,
     components: {
         emailHeader,
-        emailList
+        // emailList
     },
     // router,
     data() {
         return {
             emails: null,
+            // ?better way?
+            // inbox: true
         }
     },
     created() {
@@ -46,6 +52,10 @@ export default {
                 this.emails = emails
             })
         },
+        showDetails() { 
+            console.log('showDetails() from email-app');
+            // this.inbox = false
+        }
     },
 
 }
