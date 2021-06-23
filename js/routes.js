@@ -9,25 +9,33 @@ const routes = [
         path: '/',
         component: homepage
     },
-    {   
+    {
         path: '/keep',
         component: keepApp
     },
-    {   
+    {
         path: '/email',
         component: emailApp,
         children: [
-            {   
+            {
                 name: 'List',
                 path: 'inbox',
-                component: emailList
+                component: emailList,
+                children: [
+                    {
+                        name: 'Details',
+                        path: ':emailId',
+                        component: emailDetails
+                    },
+
+                ]
             },
-            {   
-                name: 'Details',
-                path: ':emailId',
-                component: emailDetails
-            },
-           
+            // {   
+            //     name: 'Details',
+            //     path: ':emailId',
+            //     component: emailDetails
+            // },
+
         ]
     },
 ];

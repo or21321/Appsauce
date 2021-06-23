@@ -19,7 +19,7 @@ export default {
                     <p>Drafts</p>
                 </div >
                 <!-- ?better way? -->
-                    <router-view v-if="inbox" :emails="emails"></router-view>
+                    <router-view v-if="emails" :emails="emails"></router-view>
                     <!-- <router-view v-else></router-view> -->
                     <!-- <email-list v-if="emails" :emails="emails"></email-list> -->
                 </div>
@@ -37,13 +37,12 @@ export default {
         return {
             emails: null,
             // ?better way?
-            inbox: true
+            // inbox: true
         }
     },
     created() {
         console.log('email-app created!, loadEmails()');
         this.loadEmails()
-        eventBus.$on('emailSelected', this.showDetails)
     },
     methods: {  
         loadEmails() {

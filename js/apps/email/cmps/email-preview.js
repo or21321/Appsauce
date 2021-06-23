@@ -34,7 +34,7 @@ export default {
             // console.log('this.showBody', this.showBody);
             // this.showBody = !this.showBody
                 eventBus.$emit('emailSelected')
-                this.$router.push('/email/'+this.email.id)
+                this.$router.push('/email/inbox/'+this.email.id)
         }
     },
 }
