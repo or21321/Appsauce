@@ -1,9 +1,15 @@
+import keepEdit from "./keep-edit.js"
+import keepNotes from "./keep-notes.js"
+
 export default {
     template: `
             <section>
-                <div class="main">
-                <h1>Keep-App</h1>
-                </div>
+                <header>
+                    <appsauce-menu>Menu</appsauce-menu>
+                    <input type="text" placeholder="search here...  ">
+                    <div>LOGO</div>
+                </header>
+                <router-view></router-view>
             </section>
     `,
     data() {
@@ -11,5 +17,10 @@ export default {
 
         }
     },
+
+    components:  {
+        keepEdit,
+        keepNotes
+    }
 
 }
