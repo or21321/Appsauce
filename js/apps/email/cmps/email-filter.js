@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div>
+        <div class="email-filter">
         <input type="text" placeholder="Search">
         <select name="" id="">
             <option value="all">All</option>

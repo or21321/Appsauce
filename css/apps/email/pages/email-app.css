@@ -1,33 +1,104 @@
 @import url('../cmps/email-header.css');
-
-.email-main {
-    flex-grow: 1;
-    display: flex;
-    background-color: lightskyblue;
+@font-face {
+    font-family: roboto;
+    src: url('../../../../fonts/Roboto-Regular.ttf');
 }
+
 
 .email-app {
     min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: roboto, sans-serif;
 }
+/* email-filter */
+
+.email-filter input {
+    border: 0px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #070707;
+    background-color: #f1f3f4;
+}
+
+.email-filter input:focus {
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: inset 0 - 2px black;
+    -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4; 
+    box-shadow: 0px 0px 4px 2px #F1F3F4;
+}
+
+.email-filter select {
+    background-color: #f1f3f4;
+    border: 0px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #878a8e;
+}
+
+.email-filter select:focus {
+    -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4; 
+    box-shadow: 0px 0px 4px 2px #F1F3F4;
+    /* background-color: #fff; */
+}
+
+
+/* email-main */
+
+.email-main {
+    flex-grow: 1;
+    display: flex;
+    /* background-color: lightskyblue; */
+}
+
+.email-features>* {
+    padding: 3px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-size: 0.875rem;
+    color: #5f5f61;
+}
+
+.email-features>*:hover {
+    background-color: #f1f3f4;
+    cursor: pointer;
+}
+
+
+/* email-preview */
 
 .email-preview {
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
     margin-block-end: 1.35rem;
+    padding: 5px;
+    border-radius: 10px;
 }
 
-.email-preview span {   
+.email-preview:hover {
+    cursor: pointer;
+    background-color: lightyellow;
+}
+
+.email-preview span {
     /* flex-grow: 1; */
     /* ? need to have better solution here ? */
     width: 10rem;
 }
 
+/* email-list */
+
 .email-main ul {
     flex-grow: 1;
     /* display: flex;
     flex-direction: column; */
+}
+
+/* email-details */
+
+.email-details {
+    display: flex;
 }

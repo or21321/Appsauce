@@ -1,4 +1,5 @@
 import emailPreview from "./email-preview.js"
+// import emailDetails from "../pages/email-details.js"
 
 export default {
     props: ['emails'],
@@ -6,6 +7,7 @@ export default {
         <!-- <div> -->
             <ul>
                 <email-preview v-for="email in emails" :key="email.id" :email="email"></email-preview>
+                <!-- <router-view></router-view> -->
             </ul>
         <!-- </div> -->
     `,
@@ -15,7 +17,8 @@ export default {
         }
     },
     components: {   
-        emailPreview
+        emailPreview,
+        // emailDetails
     },
     created() {
         console.log('email-list created, emails prop:', this.emails);

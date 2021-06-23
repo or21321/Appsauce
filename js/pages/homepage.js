@@ -8,7 +8,7 @@ export default {
                 <h2>Home-Page</h2>
                 <!-- router links -->
                 <router-link to="/keep">Keep</router-link>
-                <router-link to="/mail">Mail</router-link>
+                <router-link to="/email/inbox">Email</router-link>
             </div>
             <div class="footer">
                 <span>Cofferights</span>

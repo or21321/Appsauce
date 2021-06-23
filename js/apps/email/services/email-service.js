@@ -1,45 +1,39 @@
-import { storageService } from "./async-email-storage-service.js"
+import { storageService } from "../../../services/async-storage-service.js"
+import { utilService } from "../../../services/util-service.js"
 
 const EMAILS_KEY = 'emails'
-// const gBooks = _createBooks()
-
 
 export const emailService = {
     query,
-
+    getById
 }
 
-function _makeId(length = 5) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-}
 
 // ? opinion on this ?
 function query() {
     return storageService.query(EMAILS_KEY)
         .then((emails) => {
-            if (!emails || !emails.length) {    
+            if (!emails || !emails.length) {
                 console.log('query() returns _createEmails');
                 emails = _createEmails()
             }
-            storageService.saveToStorage(EMAILS_KEY, emails);
+            utilService.saveToStorage(EMAILS_KEY, emails);
             return emails
         })
 }
 
 function _createEmails() {
     return [
-        { sentBy: 'Guy', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594, id: _makeId() },
-        { sentBy: 'Puki', subject: 'Ad..', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: _makeId() },
-        { sentBy: 'Shmuki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: _makeId() }
+        { sentBy: 'Guy', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() },
+        { sentBy: 'Puki', subject: 'Ad..', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() },
+        { sentBy: 'Shmuki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() }
     ]
 
 }
 
+function getById(emailId) {
+    return storageService.get(EMAILS_KEY, emailId);
+}
 // function getNegsBooksId(bookId) {
 //     return query()
 //         .then(books => {
@@ -84,8 +78,5 @@ function _createEmails() {
 //     }
 // }
 
-// function getById(bookId) {
-//     return storageService.get(BOOKS_KEY, bookId);
-// }
 
 

@@ -1,5 +1,43 @@
-.email-header-container {   
+@font-face {
+    font-family: Product sans;
+    src: url('../../../../fonts/Product-Sans-Regular.ttf');
+}
+
+.email-header-container {
     display: flex;
     justify-content: space-between;
-    background-color: aquamarine;
+    align-items: center;
+    border-top: 1px solid #f1f3f4;
+    border-bottom: 1px solid #f1f3f4;
+    padding: 3px 0;
+    margin-inline-start: 3px;
+}
+
+.email-header-logo {
+    font-size: 1.4rem;
+}
+
+.email-header-logo span{  
+    font-family: Product sans, sans-serif;
+    font-weight: 800;
+
+}
+.email-header-logo span:not(:first-child) {   
+    margin-left: -4.5px;
+}
+
+
+/* .email-header-logo>*{
+    margin: 0;
+} */
+
+.email-nav {
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.email-nav:hover {
+    background-color: #f1f3f4;
+    /* -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4;
+    box-shadow: 0px 0px 4px 2px #F1F3F4; */
 }
