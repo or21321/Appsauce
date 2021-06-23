@@ -1,5 +1,6 @@
 import homepage from "./pages/homepage.js"
 import keepApp from "./apps/keep/pages/keep-app.js"
+import emailApp from "./apps/email/pages/email-app.js";
 import { router } from "./routes.js"
 
 const options = {
@@ -7,7 +8,9 @@ const options = {
     router,
     components: {
         homepage,
-        keepApp
+        // dont need this here
+        // keepApp,
+        // emailApp
     },
     template: `
         <!-- <section class="vue-app"> -->

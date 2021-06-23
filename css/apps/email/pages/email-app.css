@@ -1,0 +1,33 @@
+@import url('../cmps/email-header.css');
+
+.email-main {
+    flex-grow: 1;
+    display: flex;
+    background-color: lightskyblue;
+}
+
+.email-app {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.email-preview {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-block-end: 1.35rem;
+}
+
+.email-preview span {   
+    /* flex-grow: 1; */
+    /* ? need to have better solution here ? */
+    width: 10rem;
+}
+
+.email-main ul {
+    flex-grow: 1;
+    /* display: flex;
+    flex-direction: column; */
+}

@@ -1,3 +1,6 @@
+
+@import url('./apps/email/pages/email-app.css');
+
 * {
     box-sizing: border-box;
 }
