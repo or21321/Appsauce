@@ -1,4 +1,4 @@
-// import { emailService } from "../services/email-service.js"
+import { emailService } from "../services/email-service.js"
 
 export default {
     template: `
@@ -16,7 +16,8 @@ export default {
         }
     },
     created() {
-        console.log('email-DETAILS CREATED!, email:', this.email);
+        console.log('email-DETAILS CREATED!, email:', this.email)
+
     },
     destroyed() {
         console.log('email-DETAILS DESTROYED');
@@ -27,13 +28,21 @@ export default {
         }
     },
     watch: {
-        '$route.params.email': {
+        // '$route.params.email': {
+        //     immediate: true,
+        //     handler() {
+        //         this.email = this.$route.params.email;
+        //     },
+        // }
+        '$route.params.emailId': {
             immediate: true,
             handler() {
-                this.email = this.$route.params.email;
-            },
-
-
+                emailService.getById(this.$route.params.emailId)
+                .then((email) => {   
+                    this.email = email
+                    console.log('from email-DETAILS, $route.params.emailId watch', email);
+                    })
+            }
         }
     },
 

@@ -1,6 +1,7 @@
 import emailPreview from "./email-preview.js"
 import emailDetails from "../pages/email-details.js"
 import { eventBus } from "../../../services/event-bus-service.js"
+import { emailService } from "../services/email-service.js"
 
 export default {
     template: `
@@ -23,25 +24,29 @@ export default {
     methods: {
         showEmailDetails() {
             console.log('showEmailDetails from book-list');
+        },
+        loadEmails() {
+            emailService.query()
+                .then(emails => {
+                    this.emails = emails
+                    console.log('from email-LIST, loadEmails returns:', emails);
+                })
         }
     },
     created() {
-        console.log('email-LIST CREATED!, emails:', this.emails);
+        console.log('email-LIST CREATED!, loadEmails()')
+        this.loadEmails()
     },
-        destroyed() {
-            console.log('email-LIST DESTROYED');
-        },
-    watch: {
-        '$route.params.emails': {
-            immediate: true,
-            handler() {
-                this.emails = this.$route.params.emails;
-                // if (!this.emails) this.$router.push('/emails')
-                // if (!this.emails) eventBus.$emit('')
-            },
-        },
-        mounted() {
-            console.log('email-LIST MOUNTED, emails', this.emails);
-        },
-    }
+    destroyed() {
+        console.log('email-LIST DESTROYED');
+    },
+    // watch: {
+    //     '$route.params.emails': {
+    //         immediate: true,
+    //         handler() {
+    //             this.emails = this.$route.params.emails;
+    //             // if (!this.emails) this.$router.push('/emails')
+    //             // if (!this.emails) eventBus.$emit('')
+    //         },
+    //     },
 }

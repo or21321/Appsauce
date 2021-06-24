@@ -1,5 +1,5 @@
 @font-face {
-    font-family: Product sans;
+    font-family: Google sans;
     src: url('../../../../fonts/Product-Sans-Regular.ttf');
 }
 
@@ -22,7 +22,7 @@
 }
 
 .email-header-logo span{  
-    font-family: Product sans, sans-serif;
+    font-family: Google sans, sans-serif;
     font-weight: 800;
 
 }

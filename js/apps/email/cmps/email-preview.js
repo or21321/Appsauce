@@ -1,7 +1,7 @@
 export default {
     props: ['email'],
     template: `
-        <div class="email-preview" @click="showEmailDetails">
+        <div class="email-preview" @click="goToEmailDetails">
             <span>From: {{email.sentBy}}</span>
             <span>Subjet: {{email.subject}}</span>
             <!-- <span>{{email.body}}</span> -->
@@ -30,12 +30,13 @@ export default {
         }
     },
     methods: {
-        showEmailDetails() {
-            this.$router.push({
-                name: 'Details', params: {
-                    email: this.email
-                }
-            })
+        goToEmailDetails() {
+            // this.$router.push({
+            //     name: 'Details', params: {
+            //         email: this.email
+            //     }
+            // })
+            this.$router.push('/email/' + this.email.id)
         }
     },
 }

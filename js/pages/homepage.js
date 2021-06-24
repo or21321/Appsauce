@@ -9,7 +9,7 @@ export default {
                 <!-- router links -->
                 <router-link to="/keep">Keep</router-link>
                 <!-- should be changed after header footer solved -->
-                <router-link to="/email">Email</router-link>
+                <router-link to="/email/inbox">Email</router-link>
             </div>
             <div class="footer">
                 <span>Cofferights</span>

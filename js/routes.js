@@ -26,7 +26,7 @@ const routes = [
 
             {
                 name: 'Details',
-                path: 'details',
+                path: ':emailId',
                 component: emailDetails
             },
             // {   
