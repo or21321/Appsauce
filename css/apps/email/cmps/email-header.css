@@ -5,17 +5,18 @@
 
 .email-header-container {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     border-top: 1px solid #f1f3f4;
     border-bottom: 1px solid #f1f3f4;
-    padding: 3px 0;
+    padding: 7px;
     margin-inline-start: 3px;
 }
 
 .email-header-logo {
     font-size: 1.4rem;
     margin-left: 30px;
+    margin-right: 126px;
 }
 
 .email-header-logo:hover {
@@ -40,6 +41,7 @@
     padding: 10px;
     border-radius: 50%;
     color: #5f6368;
+    margin-right: 30px;
 }
 
 .email-nav:hover {

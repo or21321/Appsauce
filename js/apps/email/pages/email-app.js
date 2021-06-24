@@ -1,12 +1,12 @@
-import emailHeader from "../cmps/email-header.js"
+// import emailHeader from "../cmps/email-header.js"
 import emailList from "../cmps/email-list.js"
 import { emailService } from "../services/email-service.js"
 import { eventBus } from "../../../services/event-bus-service.js"
 
 export default {
     template: `
-            <section class="email-app"> 
-                <email-header></email-header>
+            <section class="email-app app-main"> 
+                <!-- <email-header></email-header> -->
                 
                 <div class="email-main">
                     <div class="email-features-bar">
@@ -36,13 +36,13 @@ export default {
                     </div>
                         <router-view></router-view>
                 </div>
-                <div class="email-footer">
+                <!-- <div class="email-footer">
                     <span>Cofferights</span>
-                </div>
+                </div> -->
             </section>
             `,
     components: {
-        emailHeader,
+        // emailHeader,
     },
     data() {
         return {
@@ -53,6 +53,7 @@ export default {
         console.log('email-APP CREATED!');
         // this.loadEmails()
         // eventBus.$on('loadEmails', this.loadEmails())
+        eventBus.$emit('setAppFilter', 'email')
     },
     destroyed() {
         console.log('email-APP DESTROYED');

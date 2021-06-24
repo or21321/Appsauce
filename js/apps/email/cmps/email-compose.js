@@ -34,7 +34,8 @@ export default {
                         .then(email => {
                             this.emailToEdit = email
                             // better way?
-                            this.emailToEdit.sendTo = email.sentBy
+                            this.emailToEdit.sendTo = 'Re: ' + email.sentBy
+                            this.emailToEdit.subject = 'Subject: ' + this.emailToEdit.subject
                         });
                 } else {
                     console.log('COMPOSE');

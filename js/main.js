@@ -1,25 +1,26 @@
-import homepage from "./pages/homepage.js"
-import keepApp from "./apps/keep/pages/keep-app.js"
-// import emailApp from "./apps/email/pages/email-app.js";
 import { router } from "../js/routes.js"
+import appHeader from "./cmps/app-header.js"
+import homepage from "./pages/homepage.js"
+// import appFooter from "./cmps/app-footer.js"
 
 const options = {
     el: '#app',
     router,
+    template: `
+        <section class="vue-app">
+            <app-header />
+            <router-view></router-view>
+            <!-- <app-footer /> -->
+        </section>
+    `,
     components: {
         homepage,
+        appHeader,
+        // appFooter
         // dont need this here
         // keepApp,
         // emailApp
     },
-    template: `
-        <!-- <section class="vue-app"> -->
-            <!-- <user-msg></user-msg> -->
-            <!-- <app-header /> -->
-            <router-view></router-view>
-            <!-- <app-footer /> -->
-        <!-- </section> -->
-    `,
 };
 
 const app = new Vue(options);

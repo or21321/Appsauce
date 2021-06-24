@@ -14,14 +14,16 @@
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); } */
 
 .email-app {
-    min-height: 100%;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-family: roboto, sans-serif;
 }
 
-/* email-filter */
+.email-filter {
+    flex-grow: 1;
+}
 
 .email-filter input {
     border: 0px;
@@ -29,6 +31,8 @@
     border-radius: 5px;
     color: #070707;
     background-color: #f1f3f4;
+    padding: 15px 230px 15px 20px;
+    /* height: 50px; */
 }
 
 .email-filter input:focus {
@@ -45,6 +49,7 @@
     padding: 5px;
     border-radius: 5px;
     color: #878a8e;
+    /* height: 50px; */
 }
 
 .email-filter select:focus {
@@ -133,12 +138,12 @@
     border-bottom-right-radius: 15px;
     font-size: 0.875rem;
     color: #636466;
-    margin-inline-start: 15px;
     display: flex;
     align-items: center;
-    /* justify-content: ; */
-    padding: 0 10px 0 10px;
-    margin-block-end: 10px;
+    margin-inline-start: 15px;
+    padding-block-end: 5px;
+    padding-block-start: 5px;
+    padding-inline-end: 100px;
 }
 
 .email-features>* .material-icons {
