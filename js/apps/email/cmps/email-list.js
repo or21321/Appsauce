@@ -3,18 +3,17 @@ import emailDetails from "../pages/email-details.js"
 import { eventBus } from "../../../services/event-bus-service.js"
 
 export default {
-    props: ['emails'],
     template: `
         <!-- <div> -->
             <ul>
                 <email-preview  v-for="email in emails" :key="email.id" :email="email"></email-preview>
-                <router-view></router-view>
+                <!-- <router-view></router-view> -->
             </ul>
         <!-- </div> -->
     `,
     data() {
         return {
-            inboxIsOn: true
+            emails: []
         }
     },
     components: {
@@ -22,17 +21,27 @@ export default {
         emailDetails
     },
     methods: {
-        showEmailDetails() {    
+        showEmailDetails() {
             console.log('showEmailDetails from book-list');
         }
     },
     created() {
-        console.log('email-list created, emails prop:', this.emails);
-        console.log('email-list created, inboxIsOn:', this.inboxIsOn);
-        this.inboxIsOn = true
-        eventBus.$on('emailSelected', this.showEmailDetails)
+        console.log('email-LIST CREATED!, emails:', this.emails);
     },
-    mounted() {
-        console.log('email-list mounted, emails prop:', this.emails);
-    },
+        destroyed() {
+            console.log('email-LIST DESTROYED');
+        },
+    watch: {
+        '$route.params.emails': {
+            immediate: true,
+            handler() {
+                this.emails = this.$route.params.emails;
+                if (!this.emails) this.$router.push('/emails')
+                // if (!this.emails) eventBus.$emit('')
+            },
+        },
+        mounted() {
+            console.log('email-LIST MOUNTED, emails', this.emails);
+        },
+    }
 }

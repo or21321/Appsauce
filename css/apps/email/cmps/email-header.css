@@ -17,6 +17,10 @@
     font-size: 1.4rem;
 }
 
+.email-header-logo:hover {
+    cursor: pointer;
+}
+
 .email-header-logo span{  
     font-family: Product sans, sans-serif;
     font-weight: 800;
@@ -34,10 +38,15 @@
 .email-nav {
     padding: 10px;
     border-radius: 50%;
+    color: #5f6368;
 }
 
 .email-nav:hover {
-    background-color: #f1f3f4;
+}
+
+.email-nav:hover {
+cursor: pointer;
+background-color: #f1f3f4;
     /* -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4;
     box-shadow: 0px 0px 4px 2px #F1F3F4; */
 }

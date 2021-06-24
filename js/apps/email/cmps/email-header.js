@@ -1,10 +1,11 @@
 import emailFilter from './email-filter.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 // import nav from ''
 
 export default {
     template: `
            <div class="email-header-container">
-                <div class="email-header-logo">
+                <div class="email-header-logo" @click="goToHomepage">
                     <!-- Appsauce -->
                     <!-- <p> -->
                         <span style='color: #4285f4'>A</span>
@@ -26,5 +27,13 @@ export default {
     `,
     components: {
         emailFilter,
-    }
+    },
+    created() {
+    },
+    methods: {
+        goToHomepage() {
+            // eventBus.$emit('loadEmails')
+            this.$router.push('/')
+        }
+    },
 }

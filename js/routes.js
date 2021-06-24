@@ -18,17 +18,16 @@ const routes = [
         component: emailApp,
         children: [
             {
-                name: 'List',
+                name: 'Inbox',
                 path: 'inbox',
                 component: emailList,
-                children: [
-                    {
-                        name: 'Details',
-                        path: ':emailId',
-                        component: emailDetails
-                    },
+                // props: ['emails'],
+            },
 
-                ]
+            {
+                name: 'Details',
+                path: 'details',
+                component: emailDetails
             },
             // {   
             //     name: 'Details',

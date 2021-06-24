@@ -1,9 +1,7 @@
-import { eventBus } from "../../../services/event-bus-service.js"
-
 export default {
     props: ['email'],
     template: `
-        <div class="email-preview" @click="showEmail">
+        <div class="email-preview" @click="showEmailDetails">
             <span>From: {{email.sentBy}}</span>
             <span>Subjet: {{email.subject}}</span>
             <!-- <span>{{email.body}}</span> -->
@@ -16,25 +14,28 @@ export default {
             </div>
     `,
     data() {
-        return {    
+        return {
             showBody: false
         }
     },
     created() {
-        console.log('email-preview created, email:', this.email);
+        console.log('email-PREVIEW CREATED!, email:', this.email);
     },
+        destroyed() {
+            console.log('email-PREVIEW DESTROYED');
+        },
     computed: {
         formatDate() {
             return new Date(this.email.sentAt).toLocaleDateString('he-il')
         }
     },
     methods: {
-        showEmail() {
-            console.log('this.email.id:', this.email.id);
-            // console.log('this.showBody', this.showBody);
-            // this.showBody = !this.showBody
-                eventBus.$emit('emailSelected')
-                this.$router.push('/email/inbox/'+this.email.id)
+        showEmailDetails() {
+            this.$router.push({
+                name: 'Details', params: {
+                    email: this.email
+                }
+            })
         }
     },
 }

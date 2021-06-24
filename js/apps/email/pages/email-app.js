@@ -2,37 +2,40 @@ import emailHeader from "../cmps/email-header.js"
 // import { router } from "../../../routes.js"
 import emailList from "../cmps/email-list.js"
 import { emailService } from "../services/email-service.js"
-// import emailDetails from "./email-details.js"
 import { eventBus } from "../../../services/event-bus-service.js"
 
 export default {
+    // router,
     template: `
             <section class="email-app"> 
-            <email-header></email-header>
-         
+                <email-header></email-header>
+                
                 <div class="email-main">
                     <!-- <h1>Mail-App</h1> -->
-                <div class="email-features">
-                    <p>Inbox</p>
-                    <p>Starred</p>
-                    <p>Sent mail</p>
-                    <p>Drafts</p>
-                </div >
-                <!-- ?better way? -->
-                    <router-view v-if="emails" :emails="emails"></router-view>
-                    <!-- <router-view v-else></router-view> -->
+                    <div class="email-features">
+                    <p><img src="../../../../img/icons/inbox_black_20dp.png" alt="">    
+                        Inbox</p>
+                    <p><img src="../../../../img/icons/star.png" alt="">    
+                        Starred</p>
+                    <p><img src="../../../../img/icons/sent.png" alt="">
+                        Sent</p>
+                        <p><img src="../../../../img/icons/drafts.png" alt="">
+                            Drafts</p>
+                    </div >
+                    <!-- ?better way? -->
+                    <!-- <router-view v-if="emails" :emails="emails"></router-view> -->
+                    <router-view></router-view>
                     <!-- <email-list v-if="emails" :emails="emails"></email-list> -->
                 </div>
-            <div class="email-footer">
-            <span>Cofferights</span>
-            </div>
+                <div class="email-footer">
+                    <span>Cofferights</span>
+                </div>
             </section>
-    `,
+            `,
     components: {
         emailHeader,
         // emailList
     },
-    // router,
     data() {
         return {
             emails: null,
@@ -41,18 +44,28 @@ export default {
         }
     },
     created() {
-        console.log('email-app created!, loadEmails()');
+        console.log('email-APP CREATED!');
         this.loadEmails()
+        // eventBus.$on('loadEmails', this.loadEmails())
     },
-    methods: {  
+    destroyed() {
+        console.log('email-APP DESTROYED');
+    },
+    methods: {
         loadEmails() {
             emailService.query()
-            .then(emails => {
-                console.log('loadEmails() this.emails=:', emails);
-                this.emails = emails
-            })
+                .then(emails => {
+                    this.emails = emails
+                    // this.$router.push('/email/' + emails)
+                    this.$router.push({
+                        name: 'Inbox',
+                        params: {
+                            emails: this.emails
+                        }
+                    })
+                })
         },
-        showDetails() { 
+        showDetails() {
             console.log('showDetails() from email-app');
             // this.inbox = false
         }
