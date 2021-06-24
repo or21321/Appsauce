@@ -1,0 +1,16 @@
+.note-compose {
+    display: flex;
+    border: 2px solid #DADCE0;
+    margin-top: 20px;
+    width: 600px;
+    padding: 10px;
+
+}
+
+.note-compose input {
+    border: none;
+}
+
+button{
+    border: none;
+}

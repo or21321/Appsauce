@@ -1,17 +1,52 @@
-
 @import url('./apps/email/pages/email-app.css');
+@import url('./apps/keep/cmps/note-edit.css');
+@import url('./apps/keep/pages/keep-app.css');
+@import url('./apps/keep/cmps/keep-compose.css');
+/* @import url('./apps/keep/cmps/keep-list.css'); */
 
 * {
     box-sizing: border-box;
 }
+
+/*KEEP-LIST*/
+
+.note-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-auto-flow: dense;
+    gap: 5px;
+    list-style-type: none;
+    
+}
+
+.list-item {
+    border: 1px solid #DADCE0;
+    border-radius: 5px;
+    padding: 10px;
+    /* height: fit-content; */
+    margin: 0;
+    /* margin-bottom: 10px; */
+
+}
+
+.list-item:nth-child(2n) {
+    grid-row: span 2;
+    /* background-color: lightyellow; */
+}
+
+.list-item:nth-child(3n) {
+    grid-column: span 2;
+    /* background-color: mediumaquamarine; */
+}
+
 
 html {
     height: 100%;
 }
 
 body {
-   height: 100%;
-   margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 /* .vue-app {  
@@ -31,7 +66,7 @@ body {
     /* background-color: lightyellow; */
 }
 
-.homepage .main{
+.homepage .main {
     flex-grow: 1;
 }
 

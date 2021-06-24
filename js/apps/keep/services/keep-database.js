@@ -22,7 +22,8 @@ const gNotes = [
         type: "NoteTxt",
         isPinned: false,
         info: {
-            txt: "what to do!"
+            txt: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, officiis
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea odit aut eaque`
         }
     },
     {
@@ -30,7 +31,95 @@ const gNotes = [
         type: "NoteTxt",
         isPinned: true,
         info: {
+            txt: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, officiis
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit`
+        }
+    },
+    {
+        id: 105,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
             txt: "that's right!"
+        }
+    },
+    {
+        id: 106,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, officiis
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet,
+             consectetur adipisicing elit. Culpa, officiis
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit`
+        }
+    },
+    {
+        id: 107,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, officiis
+            Lorem ipsum, `
+        }
+    },
+    {
+        id: 108,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: "that's right!"
+        }
+    },
+    {
+        id: 109,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: "that's right!"
+        }
+    },
+    {
+        id: 110,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, officiis
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit`
+        }
+    },
+    {
+        id: 111,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: "that's right!"
+        }
+    },
+    {
+        id: 112,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, officiis
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit`
+        }
+    },
+    {
+        id: 113,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: "that's right!"
+        }
+    },
+    {
+        id: 114,
+        type: "NoteTxt",
+        isPinned: true,
+        info: {
+            txt: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, officiis
+            Lorem ipsum`
         }
     },
 ]
@@ -38,26 +127,3 @@ const gNotes = [
 
 export const defaultNotes = gNotes
 
-// var notes = [
-
-//     {
-//         type: "NoteImg",
-//         info: {
-//             url: "http://some-img/me",
-//             title: "Me playing Mi"
-//         },
-//         style: {
-//             backgroundColor: "#00d"
-//         }
-//     },
-//     {
-//         type: "NoteTodos",
-//         info: {
-//             label: "How was it:",
-//             todos: [
-//                 { txt: "Do that", doneAt: null },
-//                 { txt: "Do this", doneAt: 187111111 }
-//             ]
-//         }
-//     }
-// ];

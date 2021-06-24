@@ -1,6 +1,12 @@
 export default {
     props:['note'],
     template:`
-    <p>{{note.info.txt}} </p>
-    `
+    <p  @click="select(note)">{{note.info.txt}} </p>
+    `,
+
+    methods:{
+        select(note){
+            this.$emit('selected',note)
+        },
+    }
 }

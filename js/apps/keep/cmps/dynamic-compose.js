@@ -1,16 +1,19 @@
 export default {
     template: `
     <div class="note-compose">
-        <input @change="addNote" type="text" v-model="note.info.txt" placeholder="Take a note">    
-        <section class="type-buttons">
-            <button>txt</button>
-            <button>img</button>
-            <button>todos</button>
-            <button>video</button>
-        </section>
-        <!-- <section v-if="selected-type">according to type</section> -->
+    <component :is="cmpType" @click="callToAction">
+               Call to Action!
+            </component>
+
+            <select v-model="cmpType" >
+                <option>h1</option>
+                <option>h2</option>
+                <option>p</option>
+            </select>
     </div>
     `,
+
+    
     data() {
         return {
             note: {
