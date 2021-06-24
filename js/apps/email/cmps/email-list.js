@@ -36,7 +36,7 @@ export default {
             immediate: true,
             handler() {
                 this.emails = this.$route.params.emails;
-                if (!this.emails) this.$router.push('/emails')
+                // if (!this.emails) this.$router.push('/emails')
                 // if (!this.emails) eventBus.$emit('')
             },
         },

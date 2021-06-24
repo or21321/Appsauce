@@ -26,6 +26,9 @@ function _createEmails() {
     return [
         { sentBy: 'Guy', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() },
         { sentBy: 'Puki', subject: 'Ad..', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() },
+        { sentBy: 'Shmuki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() },
+        { sentBy: 'Shmuki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() },
+        { sentBy: 'Shmuki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() },
         { sentBy: 'Shmuki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId() }
     ]
 
