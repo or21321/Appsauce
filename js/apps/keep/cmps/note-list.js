@@ -1,4 +1,4 @@
-import notePreview from "./note-preview.js";
+import notePreview from "./dynamic-preview.js";
 
 export default {
     props: ['notes'],

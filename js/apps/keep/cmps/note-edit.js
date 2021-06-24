@@ -3,7 +3,7 @@ export default {
     template: `
     <section class="note-edit">
         <form @submit="updateNote">
-            <input type="text" v-model="noteToEdit.info.txt">
+            <input type="text" v-model="noteToEdit.data.txt">
         </form>
         <button @click="closeModal">X</button>
     </section>
