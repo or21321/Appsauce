@@ -21,23 +21,6 @@ export default {
     },
     created() {
         console.log('email-COMPOSE CREATED!');
-        // const { emailId } = this.$route.params;
-        // if (emailId) {
-        //     console.log('REPLY');
-        //     // REPLY
-        //     emailService.getById(emailId)
-        //         .then(email => {
-        //             this.emailToEdit = email
-        //             // better way?
-        //             this.emailToEdit.sendTo = email.sentBy
-        //         });
-        // } else {
-        //     console.log('COMPOSE');
-        //     // COMPOSE
-        //     this.emailToEdit = emailService.getEmptyEmail();
-        //     console.log('emailToEdit = getEmptyEmail(), returns:', this.emailToEdit);
-        //     // MAKE
-        // }
     },
     watch: {    
         'this.$route.params.emailId': { 
@@ -72,14 +55,9 @@ export default {
         sendEmail() {
             console.log('sendEmail()', this.emailToEdit);
             emailService.sendEmail(this.emailToEdit)
+        setTimeout(() => {
+            this.$router.push('/email/inbox')
+        }, 2500)
         },
-        //     save() {
-        //         console.log('saving...');
-        //         carService.save(this.carToEdit)
-        //             .then(car => {
-        //                 this.$router.push('/car')
-        //                 showMsg({type: 'success', txt: 'Saved!'})
-        //             });
-        //     }
     }
 }

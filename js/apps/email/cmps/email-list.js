@@ -39,15 +39,24 @@ export default {
 
             const emailsToDisplay = this.emails.filter(email => {
                 return (
+                    // a shorter way?
                     email.sentBy.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
                     this.filterBy.isRead === 'all' ||
+
                     email.subject.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
                     this.filterBy.isRead === 'all' ||
+
                     email.sentBy.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
                     email.isRead === this.filterBy.isRead ||
+
                     email.subject.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
-                    email.isRead === this.filterBy.isRead 
-                    // email.listPrice.amount <= +this.filterBy.priceMax
+                    email.isRead === this.filterBy.isRead ||
+
+                    new Date(email.sentAt).toLocaleDateString('he-il').includes(this.filterBy.txt.toLowerCase()) &&
+                    this.filterBy.isRead === 'all' ||
+
+                    new Date(email.sentAt).toLocaleDateString('he-il').includes(this.filterBy.txt.toLowerCase()) &&
+                    email.isRead === this.filterBy.isRead
                 )
             })
             return emailsToDisplay
