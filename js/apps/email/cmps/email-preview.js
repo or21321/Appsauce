@@ -11,6 +11,7 @@ export default {
                     <!-- {{this.email.body}} -->
                     <!-- </p> -->
                 <!-- </div> -->
+                    <span class="delete-preview-btn material-icons" @click.stop="remove">delete</span>
             </div>
     `,
     data() {
@@ -21,13 +22,13 @@ export default {
     created() {
         console.log('email-PREVIEW CREATED!, email:', this.email);
     },
-        destroyed() {
-            console.log('email-PREVIEW DESTROYED');
-        },
+    destroyed() {
+        console.log('email-PREVIEW DESTROYED');
+    },
     computed: {
         formatDate() {
             return new Date(this.email.sentAt).toLocaleDateString('he-il')
-        }
+        },
     },
     methods: {
         goToEmailDetails() {
@@ -36,7 +37,10 @@ export default {
             //         email: this.email
             //     }
             // })
-            this.$router.push('/email/' + this.email.id)
-        }
+            this.$router.push('/email/details/' + this.email.id)
+        },
+        remove() {
+            this.$emit('remove', this.email.id);
+        },
     },
 }

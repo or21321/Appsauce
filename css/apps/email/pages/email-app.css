@@ -5,9 +5,11 @@
 }
 
 /* icons */
+
 .material-icons {
     color: #767676;
 }
+
 /* .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); } */
 
@@ -51,25 +53,78 @@
     /* background-color: #fff; */
 }
 
-/* email-main */
+.email-filter select:hover {
+    cursor: pointer;
+}
+
+/* .email-filter select option {   
+    border: 0px;
+} */
+
+.email-filter select>*:hover { 
+    cursor: pointer;
+}
+
+/* email-compose */
 
 .email-compose {
+    flex-grow: 1;
+}
+
+.email-compose form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin: 16px 0 0 0;
+}
+
+.email-compose form input {
+    width: fit-content;
+}
+
+/* email-main */
+
+.email-compose-btn {
+    /* font isnt accurate yet */
     font-family: Google sans, sans-serif;
     display: flex;
     align-items: center;
-    color: #3c4043;
     margin-inline-start: 15px;
+    border-radius: 24px;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    transition: box-shadow .08s linear, min-width .15s cubic-bezier(0.4, 0.0, 0.2, 1);
+    margin: 16px 0 16px 8px;
+    padding: 0 0 0 8px;
+    height: 48px;
+}
+
+.email-compose-btn :nth-child(1) {
+    padding-left: 4px;
+}
+
+.email-compose-btn :nth-child(2) {
+    padding-right: 1.5rem;
+    color: #3c4043;
+    letter-spacing: .25px;
+    margin-left: 8px;
+    line-height: 25px;
+    /* text-align: center; */
+}
+
+.email-compose-btn:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 1px 3px #c2c2c4;
+    box-shadow: 0 4px 8px 3px #c2c2c4;
 }
 
 .email-main {
     flex-grow: 1;
     display: flex;
-    /* flex-direction: column; */
-    /* background-color: lightskyblue; */
 }
 
 /* .email-features-bar {   
-    display: flex;
+   
 } */
 
 .email-features>* {
@@ -86,7 +141,7 @@
     margin-block-end: 10px;
 }
 
-.email-features>* .material-icons { 
+.email-features>* .material-icons {
     margin-inline-end: 15px;
 }
 
@@ -117,6 +172,19 @@
     width: 10rem;
 }
 
+.delete-preview-btn {
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+.email-preview:hover .delete-preview-btn {
+    /* background-color: #f1f3f4; */
+    /* padding: 7px; */
+    /* border-radius: 5px; */
+    /* width: 10px; */
+    opacity: 1;
+}
+
 /* email-list */
 
 .email-main ul {
@@ -128,5 +196,81 @@
 /* email-details */
 
 .email-details {
+    flex-grow: 1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 16px auto 0 auto;
+    max-width: 600px;
+    gap: 45px;
+}
+
+.email-details .sentby-date {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.email-details .body-container {
+    flex-grow: 1;
+    width: 100%;
+    background-color: #f4f5f9;
+    display: flex;
+    /* position: relative; */
+}
+
+.email-details .body {
+    text-align: center;
+    display: inline-block;
+    background-color: #ffffff;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+}
+
+.email-details .details-features {
+    display: flex;
+}
+
+/* .email-details .details-features>*:hover {
+    cursor: pointer;
+} */
+
+.icon {
+    position: relative;
+    display: inline-block;
+    /* border-bottom: 1px dotted black; If you want dots under the hoverable text */
+    padding: 7px;
+    border-radius: 50%;
+    color: #5f6368;
+}
+
+.icon:hover {
+    cursor: pointer;
+    background-color: #f1f3f4;
+}
+
+/* Tooltip text */
+
+.icon .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(46, 45, 45);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 1s;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    top: -25px;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+
+.icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }

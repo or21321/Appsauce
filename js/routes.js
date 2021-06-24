@@ -3,6 +3,7 @@ import keepApp from "./apps/keep/pages/keep-app.js"
 import emailApp from "./apps/email/pages/email-app.js"
 import emailList from "./apps/email/cmps/email-list.js"
 import emailDetails from "./apps/email/pages/email-details.js"
+import emailCompose from "./apps/email/cmps/email-compose.js"
 
 const routes = [
     {
@@ -26,14 +27,15 @@ const routes = [
 
             {
                 name: 'Details',
-                path: ':emailId',
+                path: 'details/:emailId',
                 component: emailDetails
             },
-            // {   
-            //     name: 'Details',
-            //     path: ':emailId',
-            //     component: emailDetails
-            // },
+            {   
+                name: 'Compose',
+                // id like to understand how this works better.
+                path: 'compose/:emailId?',
+                component: emailCompose
+            },
 
         ]
     },

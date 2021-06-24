@@ -11,7 +11,7 @@ export default {
                 <div class="email-main">
                     <div class="email-features-bar">
 
-                        <div class="email-compose">
+                        <div class="email-compose-btn" @click="goToEmailCompose">
                             <div>
                                 <img src="../../../../img/icons/compose.png" alt="">
                             </div>
@@ -20,11 +20,11 @@ export default {
                             </div>
                         </div>
                         <div class="email-features">
-                            <div>
+                            <div @click="goToInbox">
                                 <span class="material-icons">inbox</span><span>Inbox</span>
                             </div>
                             <div>
-                                <span class="material-icons">star</span><span>Star</span>
+                                <span class="material-icons">star</span><span>Starred</span>
                             </div>
                             <div>
                                 <span class="material-icons">send</span><span>Sent</span>
@@ -58,20 +58,12 @@ export default {
         console.log('email-APP DESTROYED');
     },
     methods: {
-        // loadEmails() {
-        //     emailService.query()
-        //         .then(emails => {
-        //             this.emails = emails
-        //             console.log('from email-APP EMAILS:', emails);
-                    // this.$router.push('/email/' + emails)
-                    // this.$router.push({
-                    //     name: 'Inbox',
-                    //     params: {
-                    //         emails: this.emails
-                    //     }
-                    // })
-                // })
-        // },
+        goToInbox() {
+            this.$router.push('/email/inbox')
+        },
+        goToEmailCompose() {
+            this.$router.push('/email/compose')
+        },
         showDetails() {
             console.log('showDetails() from email-app');
             // this.inbox = false
