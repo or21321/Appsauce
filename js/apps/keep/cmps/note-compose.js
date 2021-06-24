@@ -1,9 +1,8 @@
 export default {
     template: `
     <div class="note-compose">
-        <label>Create new note</label>
-        <input @change="addNote" type="text" v-model="note.info.txt" placeholder="Enter text here">    
-        <section>
+        <input @change="addNote" type="text" v-model="note.info.txt" placeholder="Take a note">    
+        <section class="type-buttons">
             <button>txt</button>
             <button>img</button>
             <button>todos</button>
@@ -27,6 +26,14 @@ export default {
     methods: {
         addNote() {
             this.$emit('composed', this.note);
+            this.note= {
+                type: "noteTxt",
+                isPinned: false,
+                info: {
+                    txt:null,
+                }
+
+            }
         }
     },
 }

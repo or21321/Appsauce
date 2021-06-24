@@ -1,24 +1,32 @@
 import noteFilter from '../cmps/note-filter.js'
-import noteCompose from '../cmps/note-compose.js'
+// import noteCompose from '../cmps/note-compose.js'
 import noteList from '../cmps/note-list.js'
+import noteEdit from '../cmps/note-edit.js'
+import dynamicCompose from '../cmps/dynamic-compose.js'
 import { keepService } from '../services/keep-service.js';
 
 export default {
     template: `
     <section class="keep-app">
-        <header>
-            <div>Menu</div>
+        <header class="keep-header">
+            <button class="menu">Menu</button>
             <note-filter @filtered="setFilter"></note-filter>
             <div>LOGO</div>
         </header>
-        <note-compose @composed="addNote"></note-compose>
-        <note-list :notes="notesToShow" @removed="removeNote"></note-list>
+        <section class="main-content">
+            <!-- <note-compose @composed="save"></note-compose> -->
+            <dynamic-compose @composed="save"></dynamic-compose>
+            <note-list :notes="notesToShow" @removed="removeNote" @selected="selectNote"></note-list>
+            <note-edit v-if="note" :note="note" @closed="closeModal" @updated="save"></note-edit>
+</section>
     </section>
     `,
     data() {
         return {
             notes: [],
             filterBy: null,
+            note: null
+
         };
     },
     methods: {
@@ -34,13 +42,27 @@ export default {
             console.log(this.filterBy)
         },
 
-        addNote(note){
+        save(note) {
             keepService.saveNote(note)
-            this.loadNotes()
+            .then(()=>{
+                this.loadNotes()
+            })
+
         },
 
-        removeNote(note){
-            keepService.removeNote
+        removeNote(note) {
+            keepService.removeNote(note.id)
+            .then(()=>{
+                this.loadNotes()
+            })
+        },
+
+        selectNote(note) {
+            this.note = note
+        },
+
+        closeModal() {
+            this.note = null
         }
     },
     computed: {
@@ -48,10 +70,9 @@ export default {
             console.log(this.notes)
             if (!this.filterBy) return this.notes;
             const searchTerm = this.filterBy.txt.toLowerCase();
-            // const fromPrice = this.filterBy.fromPrice
-            // const toPrice = this.filterBy.toPrice
+           
             const notesToShow = this.notes.filter(note => {
-                return (note.info.txt.toLowerCase().includes(searchTerm))
+                return (note.data.txt.toLowerCase().includes(searchTerm))
             });
             return notesToShow;
         }
@@ -64,7 +85,9 @@ export default {
 
     components: {
         noteFilter,
-        noteCompose,
-        noteList
+        // noteCompose,
+        noteList,
+        noteEdit,
+        dynamicCompose
     }
 };

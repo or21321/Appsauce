@@ -1,6 +1,7 @@
 export default {
     props:['note'],
     template:`
-    <p>{{note.info.txt}} </p>
-    `
+    <p>{{note.data.txt}} </p>
+    `,
+
 }
