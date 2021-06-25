@@ -10,7 +10,8 @@ export const emailService = {
     sendEmail,
     removeEmail,
     toggleEmailStarred,
-    save
+    save,
+    querySentEmails
 }
 
 
@@ -27,9 +28,20 @@ function query() {
         })
 }
 
+function querySentEmails() {
+    return storageService.query('sentEmails')
+        .then(emails => {
+            if (!emails || !emails.length) {
+                return Promise.reject('Dont have any sent emails')
+            }
+            // utilService.saveToStorage('sentEmails', emails)
+            return emails
+        })
+}
+
 function getEmptyEmail() {
     return {
-        sentBy: '', subject: '', body: '', sendTo: ''
+        sentBy: '', subject: '', body: '', sendTo: '', isRead: false
         // sentBy should be added on compose
         // also isRead: false, sentAt, and Id
     }
@@ -40,29 +52,41 @@ function sendEmail(email) {
     const emailToSend = email
     // emailToSend.id = utilService.makeId()
     emailToSend.sentBy = 'Loki'
-    emailToSend.isRead = false
     emailToSend.sentAt = Date.now()
     // should send the email here if it was a real scenario
     save(emailToSend)
+        .then(sentEmail => {
+            sentEmail.sentBy = 'Me'
+            storageService.post('sentEmails', sentEmail);
+        })
+    // saveSentEmail(emailToSend)
 }
 
+// function saveSentEmail(sentEmail) {
+//     if (email.id) {
+//         return storageService.put(EMAILS_KEY, email);
+//     } else {
+//         return storageService.post(EMAILS_KEY, email);
+//     }
+// }
+
 function toggleEmailStarred(emailId) {
-    getById(emailId)
+    return getById(emailId)
         .then((email) => {
             email.isStarred = !email.isStarred
             console.log('email.isStarred', email.isStarred);
-            save(email)
+            return save(email)
         })
 }
 
 function _createEmails() {
     return [
-        { sentBy: 'Guy', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false,  },
-        { sentBy: 'Puki', subject: 'Ad..', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false,  },
-        { sentBy: 'Shluki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false,  },
-        { sentBy: 'Farem', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false,  },
-        { sentBy: 'Tinder', subject: 'We will help you', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false,  },
-        { sentBy: 'okCupid', subject: 'We will help you more', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false,  }
+        { sentBy: 'Guy', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Puki', subject: 'Ad..', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Shluki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Farem', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Tinder', subject: 'We will help you', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'okCupid', subject: 'We will help you more', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, }
     ]
 
 }

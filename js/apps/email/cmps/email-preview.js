@@ -1,8 +1,9 @@
 export default {
-    props: ['email'],
+    props: ['email', 'isSentListOn'],
     template: `
         <div class="email-preview" @click="goToEmailDetails">
-            <span>From: {{email.sentBy}}</span>
+            <span v-if="!isSentListOn">From: {{email.sentBy}}</span>
+            <span v-else>To: {{email.sendTo}}</span>
             <span>Subjet: {{email.subject}}</span>
             <!-- <span>{{email.body}}</span> -->
             <span>{{formatDate}}</span>
@@ -16,11 +17,13 @@ export default {
     `,
     data() {
         return {
-            showBody: false
+            showBody: false,
+            // sent: false
         }
     },
     created() {
         console.log('email-PREVIEW CREATED!, email:', this.email);
+        console.log('from PREVIEW, isSentListOn', this.isSentListOn);
     },
     destroyed() {
         console.log('email-PREVIEW DESTROYED');
@@ -32,11 +35,6 @@ export default {
     },
     methods: {
         goToEmailDetails() {
-            // this.$router.push({
-            //     name: 'Details', params: {
-            //         email: this.email
-            //     }
-            // })
             this.$router.push('/email/details/' + this.email.id)
         },
         remove() {

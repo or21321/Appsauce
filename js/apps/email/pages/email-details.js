@@ -10,11 +10,12 @@ export default {
                 <!-- <p>{{formatDate}}, {{formatTime}}</p> -->
                 <div class="details-features">
                     <div class="icon" @click="toggleEmailStarred">
-                        <span class="material-icons">star</span>
+                        <span v-if="isStarred" class="material-icons" style="font-size: 22px; color:#f7cb4d">star</span>
+                        <span v-else class="material-icons" style="font-size: 22px">star_border</span>
                         <span class="tooltip-text">Not starred</span>
                     </div>
                     <div class="icon" @click="reply">
-                        <span class="material-icons">reply</span>
+                        <span class="material-icons" style="font-size: 22px">reply</span>
                         <span class="tooltip-text">Reply</span>
                     </div>
                     <!-- <span class="material-icons">reply</span> -->
@@ -47,6 +48,10 @@ export default {
         },
         formatTime() {
             return new Date(this.email.sentAt).toLocaleTimeString('he-il')
+        },
+        isStarred() {
+            console.log('isStarred()');
+            return this.email.isStarred
         }
     },
     watch: {
@@ -81,6 +86,8 @@ export default {
         toggleEmailStarred() {
             console.log('markAsStar');
             emailService.toggleEmailStarred(this.email.id)
+                .then(email => this.email = email)
+                
         },
     },
 

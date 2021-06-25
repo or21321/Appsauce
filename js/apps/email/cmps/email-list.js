@@ -7,7 +7,7 @@ export default {
     template: `
         <!-- <div> -->
             <ul>
-                <email-preview @remove="removeEmail" v-for="email in emailsToShow" :key="email.id" :email="email"></email-preview>
+                <email-preview @remove="removeEmail" v-for="email in emailsToShow" :key="email.id" :email="email" :isSentListOn="isSentList"></email-preview>
                 <!-- <router-view></router-view> -->
             </ul>
         <!-- </div> -->
@@ -15,7 +15,9 @@ export default {
     data() {
         return {
             emails: [],
-            filterBy: null
+            filterBy: null,
+            isStarredList: false,
+            isSentList: false
         }
     },
     components: {
@@ -40,6 +42,7 @@ export default {
             const emailsToDisplay = this.emails.filter(email => {
                 return (
                     // a shorter way?
+
                     email.sentBy.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
                     this.filterBy.isRead === 'all' ||
 
@@ -58,6 +61,7 @@ export default {
                     new Date(email.sentAt).toLocaleDateString('he-il').includes(this.filterBy.txt.toLowerCase()) &&
                     email.isRead === this.filterBy.isRead
                 )
+                // if (this.isStarredList) return this.
             })
             return emailsToDisplay
         },
@@ -76,9 +80,27 @@ export default {
         loadEmails() {
             emailService.query()
                 .then(emails => {
+                    if (this.isStarredList) emails = this.filterListByStarred(emails)
                     this.emails = emails
                     console.log('from email-LIST, loadEmails returns:', emails);
                 })
+        },
+        loadSentEmails() {
+            emailService.querySentEmails()
+                .then(emails => {
+                    this.isSentList = true
+                    this.emails = emails
+                    console.log('from email-LIST, loadSentEmails returns:', emails);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        },
+        filterListByStarred(emails) {
+            console.log('filtering by starred');
+            return emails.filter(email => {
+                return email.isStarred
+            })
         },
         removeEmail(emailId) {
             console.log('deleting..', emailId);
@@ -88,13 +110,48 @@ export default {
                 })
         },
     },
-    // watch: {
-    //     '$route.params.emails': {
-    //         immediate: true,
-    //         handler() {
-    //             this.emails = this.$route.params.emails;
-    //             // if (!this.emails) this.$router.push('/emails')
-    //             // if (!this.emails) eventBus.$emit('')
-    //         },
-    //     },
+    watch: {
+        '$route': {
+            immediate: true,
+            handler() {
+                // ?Corret way, or should i make it different comps, or send param instead?
+                console.log('this.$route.path, from list', this.$route.path);
+                switch (this.$route.path) {
+                    case '/email/inbox/starred':
+                        console.log('STARRED');
+                        this.isSentList = false
+                        this.isStarredList = true
+                        this.loadEmails()
+                        break
+                    case '/email/inbox/sent':
+                        console.log('SENT');
+                        this.isStarredList = false
+                        this.loadSentEmails()
+                        break
+                    case '/email/inbox':
+                        console.log('LIST');
+                        this.isSentList = false
+                        this.isStarredList = false
+                        this.loadEmails()
+                        break
+                }
+                // if (this.$route.path === '/email/inbox/starred') {
+                //     console.log('STARRED');
+                //     this.isStarredList = true
+                //     this.loadEmails()
+                // }
+                // else if (this.$route.path === 'email/inbox/sent') {
+                //     this.isStarredList = false
+                //     console.log('emailService.loadSentEmails()');
+                // }
+                // else {
+                //     console.log('LIST');
+                //     this.isStarredList = false
+                //     this.loadEmails()
+                // }
+                // if (!this.emails) this.$router.push('/emails')
+                // if (!this.emails) eventBus.$emit('')
+            },
+        },
+    }
 }

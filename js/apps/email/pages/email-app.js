@@ -23,10 +23,10 @@ export default {
                             <div @click="goToInbox">
                                 <span class="material-icons">inbox</span><span>Inbox</span>
                             </div>
-                            <div>
+                            <div @click="goToStarred">
                                 <span class="material-icons">star</span><span>Starred</span>
                             </div>
-                            <div>
+                            <div @click="goToSent">
                                 <span class="material-icons">send</span><span>Sent</span>
                             </div>
                             <div>
@@ -61,6 +61,12 @@ export default {
     methods: {
         goToInbox() {
             this.$router.push('/email/inbox')
+        },
+        goToStarred() {
+            this.$router.push('/email/inbox/starred')
+        },
+        goToSent() {
+            this.$router.push('/email/inbox/sent')
         },
         goToEmailCompose() {
             this.$router.push('/email/compose')

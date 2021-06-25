@@ -23,6 +23,19 @@ const routes = [
                 path: 'inbox',
                 component: emailList,
                 // props: ['emails'],
+                children: [
+                    {
+                        //    ?should i make it different comp?
+                        name: 'Starred',
+                        path: 'starred',
+                        component: emailList,
+                    },
+                    {
+                        name: 'Sent',
+                        path:'sent',
+                        component: emailList
+                    },
+                ]
             },
 
             {
@@ -30,7 +43,7 @@ const routes = [
                 path: 'details/:emailId',
                 component: emailDetails
             },
-            {   
+            {
                 name: 'Compose',
                 // id like to understand how this works better.
                 path: 'compose/:emailId?',
