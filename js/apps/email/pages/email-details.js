@@ -77,8 +77,8 @@ export default {
                         }
                         this.email = email
                         console.log('from email-DETAILS, $route.params.emailId watch', email);
-                        if (email && !email.isRead) {
-                            email.isRead = true
+                        if (email && email.isRead === 'unread') {
+                            email.isRead = 'read'
                             emailService.save(email)
                             console.log('saved email after setting .isRead = true');
                         }

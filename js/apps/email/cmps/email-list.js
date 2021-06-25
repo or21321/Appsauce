@@ -64,6 +64,7 @@ export default {
                 )
                 // if (this.isStarredList) return this.
             })
+            console.log('emailstoDisplay', emailsToDisplay);
             return emailsToDisplay
         },
     },
@@ -71,9 +72,10 @@ export default {
         filter(filterBy) {
             console.log('from list, filterBy', filterBy);
             // is there a way to just set boolean value on the select? o.O
-            if (filterBy.isRead === 'read') filterBy.isRead = true
-            if (filterBy.isRead === 'unread') filterBy.isRead = false
+            if (!filterBy.isRead) filterBy.isRead = 'all'
             this.filterBy = filterBy
+            // if (filterBy.isRead === 'read') this.filterBy.isRead = 'read'
+            // if (filterBy.isRead === 'unread') this.filterBy.isRead = 'unread'
         },
         showEmailDetails() {
             console.log('showEmailDetails from book-list');
@@ -84,6 +86,7 @@ export default {
                     if (this.isStarredList) emails = this.filterListByStarred(emails)
                     this.emails = emails
                     console.log('from email-LIST, loadEmails returns:', emails);
+                    this.$emit('inboxSize', emails.length)
                 })
         },
         loadSentEmails() {

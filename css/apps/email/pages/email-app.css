@@ -22,20 +22,44 @@
 }
 
 .email-filter {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    display: flex;
+    align-items: center;
+    background-color: #f1f3f4;
+    /* padding: 5px; */
+    border-radius: 8px;
+}
+
+.email-filter input:focus~.email-filter span:nth-child(1) {
+    background-color: #ffffff;
+}
+
+.email-filter span:nth-child(1) {
+    margin-left: 17px;
+    color: #5f6368;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.email-filter span:nth-child(1):hover {
+    cursor: pointer;
+    background-color: #e6e6e6;
 }
 
 .email-filter input {
+    font-size: 0.95rem;
     border: 0px;
-    padding: 5px;
-    border-radius: 5px;
     color: #070707;
     background-color: #f1f3f4;
-    padding: 15px 230px 15px 20px;
+    padding: 16px 428px 15px 17px;
+    transition: background-color .13s;
+    /* transition: box-shadow 3s; */
+    /* padding: 15px 230px 15px 20px; */
     /* height: 50px; */
 }
 
-.email-filter input:focus {
+.email-filter:focus-within {
+    /* background-color: #fff; */
     background-color: #ffffff;
     outline: none;
     box-shadow: inset 0 - 2px black;
@@ -43,30 +67,58 @@
     box-shadow: 0px 0px 4px 2px #F1F3F4;
 }
 
+/* .email-filter input {
+    font-size: 0.9rem;
+    border: 0px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #070707;
+    background-color: #f1f3f4;
+    padding: 16px 533px 15px 20px; */
+
+/* } */
+
+.email-filter input:focus {
+    background-color: #ffffff;
+    border: 0px;
+    outline: none;
+    /* box-shadow: inset 0 - 2px black;
+    -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4;
+    box-shadow: 0px 0px 4px 2px #F1F3F4; */
+}
+
+.email-filter input:focus ~ select {
+    background-color: #ffffff;
+}
+
 .email-filter select {
     background-color: #f1f3f4;
     border: 0px;
     padding: 5px;
     border-radius: 5px;
+    border: 0px;
     color: #878a8e;
     /* height: 50px; */
+    appearance: none;
 }
 
-.email-filter select:focus {
-    -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4;
-    box-shadow: 0px 0px 4px 2px #F1F3F4;
+/* .email-filter select:focus { */
+    /* -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4; */
+    /* box-shadow: 0px 0px 4px 2px #F1F3F4; */
     /* background-color: #fff; */
-}
+/* } */
 
 .email-filter select:hover {
     cursor: pointer;
+    background-color: #e6e6e6;
+    /* padding: 10px; */
 }
 
 /* .email-filter select option {   
     border: 0px;
 } */
 
-.email-filter select>*:hover { 
+.email-filter select>*:hover {
     cursor: pointer;
 }
 
@@ -91,6 +143,7 @@
 /* email-main */
 
 /* that should be infeatures */
+
 .email-compose-btn {
     /* font isnt accurate yet */
     font-family: Google sans-medium, sans-serif;
@@ -147,11 +200,22 @@
     padding-inline-start: 26px;
     padding-block-end: 5px;
     padding-block-start: 5px;
-    padding-inline-end: 100px;
+    /* padding-inline-end: 100px; */
+}
+
+.email-features .inbox-span {
+    color: #242528;
+    font-weight: 1000;
+    padding-right: 124px;
+    /* padding-right: 144px; */
+}
+
+.email-features .inbox-size {
+    padding-right: 24px;
 }
 
 .email-features>* .material-icons {
-    margin-inline-end: 15px;
+    margin-inline-end: 17px;
 }
 
 .email-features>*:hover {

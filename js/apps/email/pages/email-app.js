@@ -21,20 +21,21 @@ export default {
                         </div>
                         <div class="email-features">
                             <div @click="goToInbox">
-                                <span class="material-icons">inbox</span><span>Inbox</span>
+                                <span class="material-icons" style="font-size: 22px">inbox</span>
+                                <span class="inbox-span">Inbox</span><span class="inbox-size">{{inboxSize}}</span>
                             </div>
                             <div @click="goToStarred">
-                                <span class="material-icons">star</span><span>Starred</span>
+                                <span class="material-icons" style="font-size: 22px">star</span><span>Starred</span>
                             </div>
                             <div @click="goToSent">
-                                <span class="material-icons">send</span><span>Sent</span>
+                                <span class="material-icons" style="font-size: 22px">send</span><span>Sent</span>
                             </div>
                             <div>
-                                <span class="material-icons">drafts</span><span>Drafts</span>
+                                <span class="material-icons" style="font-size: 22px">drafts</span><span>Drafts</span>
                             </div>
                         </div >
                     </div>
-                        <router-view></router-view>
+                        <router-view @inboxSize="setInboxSize"></router-view>
                 </div>
                 <!-- <div class="email-footer">
                     <span>Cofferights</span>
@@ -47,6 +48,7 @@ export default {
     data() {
         return {
             emails: null,
+            inboxSize: null
         }
     },
     created() {
@@ -58,7 +60,13 @@ export default {
     destroyed() {
         console.log('email-APP DESTROYED');
     },
+    computed: {
+    },
     methods: {
+        setInboxSize(emailsLength) {   
+            console.log('INBOX SIZE', emailsLength);
+            this.inboxSize = emailsLength
+        },
         goToInbox() {
             this.$router.push('/email/inbox')
         },

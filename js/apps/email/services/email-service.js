@@ -41,7 +41,7 @@ function querySentEmails() {
 
 function getEmptyEmail() {
     return {
-        sentBy: '', subject: '', body: '', sendTo: '', isRead: false
+        sentBy: '', subject: '', body: '', sendTo: '', isRead: 'unread'
         // sentBy should be added on compose
         // also isRead: false, sentAt, and Id
     }
@@ -81,12 +81,12 @@ function toggleEmailStarred(emailId) {
 
 function _createEmails() {
     return [
-        { sentBy: 'Guy', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
-        { sentBy: 'Puki', subject: 'Ad..', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
-        { sentBy: 'Shluki', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
-        { sentBy: 'Farem', subject: 'Another ad', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
-        { sentBy: 'Tinder', subject: 'We will help you', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
-        { sentBy: 'okCupid', subject: 'We will help you more', body: 'Buy me!', isRead: false, sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, }
+        { sentBy: 'Guy', subject: 'Wassap?', body: 'Pick up!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Puki', subject: 'Ad..', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Shluki', subject: 'Another ad', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Farem', subject: 'Another ad', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Tinder', subject: 'We will help you', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'okCupid', subject: 'We will help you more', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, }
     ]
 
 }
