@@ -32,7 +32,7 @@ function querySentEmails() {
     return storageService.query('sentEmails')
         .then(emails => {
             if (!emails || !emails.length) {
-                return Promise.reject('Dont have any sent emails')
+                return Promise.reject('Error: Dont have any sent emails')
             }
             // utilService.saveToStorage('sentEmails', emails)
             return emails
@@ -54,10 +54,10 @@ function sendEmail(email) {
     emailToSend.sentBy = 'Loki'
     emailToSend.sentAt = Date.now()
     // should send the email here if it was a real scenario
-    save(emailToSend)
+    return save(emailToSend)
         .then(sentEmail => {
             sentEmail.sentBy = 'Me'
-            storageService.post('sentEmails', sentEmail);
+            return storageService.post('sentEmails', sentEmail);
         })
     // saveSentEmail(emailToSend)
 }
@@ -103,8 +103,8 @@ function save(email) {
     }
 }
 
-function getById(emailId) {
-    return storageService.get(EMAILS_KEY, emailId);
+function getById(emailId, key = EMAILS_KEY) {
+    return storageService.get(key, emailId);
 }
 // function getNegsBooksId(bookId) {
 //     return query()

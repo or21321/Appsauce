@@ -1,4 +1,5 @@
 import { emailService } from "../services/email-service.js"
+import { showMsg } from "../../../services/event-bus-service.js"
 
 export default {
     template: `
@@ -66,9 +67,17 @@ export default {
             handler() {
                 emailService.getById(this.$route.params.emailId)
                     .then((email) => {
+                        if (!email) {
+                            console.log('email isnt found in emails array');
+                            emailService.getById(this.$route.params.emailId, 'sentEmails')
+                                .then(sentEmail => {
+                                    console.log('sentEmail', sentEmail);
+                                    this.email = sentEmail
+                                })
+                        }
                         this.email = email
                         console.log('from email-DETAILS, $route.params.emailId watch', email);
-                        if (!email.isRead) {
+                        if (email && !email.isRead) {
                             email.isRead = true
                             emailService.save(email)
                             console.log('saved email after setting .isRead = true');
@@ -86,8 +95,24 @@ export default {
         toggleEmailStarred() {
             console.log('markAsStar');
             emailService.toggleEmailStarred(this.email.id)
-                .then(email => this.email = email)
-                
+                .then(email => {
+                    if (email.isStarred) {
+                        const msg = {
+                            txt: 'Email starred',
+                            type: 'success'
+                        }
+                        showMsg(msg)
+                    }
+                    else {
+                        const msg = {
+                            txt: 'Email unstarred',
+                            type: 'success'
+                        }
+                        showMsg(msg)
+                    }
+                    this.email = email
+                })
+
         },
     },
 

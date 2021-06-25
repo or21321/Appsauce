@@ -1,6 +1,7 @@
 import emailPreview from "./email-preview.js"
 import emailDetails from "../pages/email-details.js"
 import { eventBus } from "../../../services/event-bus-service.js"
+import { showMsg } from "../../../services/event-bus-service.js"
 import { emailService } from "../services/email-service.js"
 
 export default {
@@ -26,7 +27,7 @@ export default {
     },
     created() {
         console.log('email-LIST CREATED!, loadEmails()')
-        this.loadEmails()
+        // this.loadEmails()
         eventBus.$on('filtered', this.filter)
     },
     destroyed() {
@@ -94,6 +95,7 @@ export default {
                 })
                 .catch(err => {
                     console.log(err);
+                    this.$router.push('/email/inbox')
                 })
         },
         filterListByStarred(emails) {
@@ -107,6 +109,11 @@ export default {
             emailService.removeEmail(emailId)
                 .then(() => {
                     this.loadEmails()
+                    const msg = {
+                        txt: 'Email deleted!',
+                        type: 'success'
+                    }
+                    showMsg(msg)
                 })
         },
     },
@@ -117,6 +124,12 @@ export default {
                 // ?Corret way, or should i make it different comps, or send param instead?
                 console.log('this.$route.path, from list', this.$route.path);
                 switch (this.$route.path) {
+                    case '/email/inbox':
+                        console.log('LIST');
+                        this.isSentList = false
+                        this.isStarredList = false
+                        this.loadEmails()
+                        break
                     case '/email/inbox/starred':
                         console.log('STARRED');
                         this.isSentList = false
@@ -127,12 +140,6 @@ export default {
                         console.log('SENT');
                         this.isStarredList = false
                         this.loadSentEmails()
-                        break
-                    case '/email/inbox':
-                        console.log('LIST');
-                        this.isSentList = false
-                        this.isStarredList = false
-                        this.loadEmails()
                         break
                 }
                 // if (this.$route.path === '/email/inbox/starred') {
