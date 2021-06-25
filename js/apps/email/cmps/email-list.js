@@ -95,7 +95,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err);
-                    this.$router.push('/email/inbox')
+                    showMsg(err)
+                    // this.$router.push('/email/inbox')
                 })
         },
         filterListByStarred(emails) {

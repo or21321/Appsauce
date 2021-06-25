@@ -32,7 +32,7 @@ function querySentEmails() {
     return storageService.query('sentEmails')
         .then(emails => {
             if (!emails || !emails.length) {
-                return Promise.reject('Error: Dont have any sent emails')
+                return Promise.reject({txt: 'Dont have any sent emails', type: 'error'})
             }
             // utilService.saveToStorage('sentEmails', emails)
             return emails

@@ -5,12 +5,14 @@ export default {
     template: `
         <div v-if="msg" class="user-msg" :class="msg.type">
             <button @click="closeMsg" class="close-msg">X</button>
-            <span v-if="isSuccess" style="color:rgb(37, 206, 37);font-size: 24px;">✔</span>
+            <span v-if="isSuccess" style="color: #dadadb;font-size: 24px;">✔</span>
             <span v-else>❌</span>
-                <!-- cool? or nah? blah -->
+            <!-- <span v-if="isSuccess" style="color:rgb(37, 206, 37);font-size: 24px;">✔</span> -->
+            <!-- cool? or nah? blah -->
             <div style="display:inline-block">
-                <h4 v-if="isSuccess">SUCCESS!</h4>
-                <h4 v-else>ERROR!</h4>
+                <!-- <h4 v-if="isSuccess"></h4> -->
+                <!-- <h4 v-if="isSuccess">SUCCESS!</h4> -->
+                <!-- <h4 v-else>ERROR!</h4> -->
                 <p>{{msg.txt}}</p>
                 <router-link v-if="msg.link" :to="msg.link"><span @click="closeMsg">Check it out!</span></router-link>
             </div>
@@ -37,7 +39,7 @@ export default {
                 if (this.msg.link) this.$router.push('/email/inbox')
                 this.msg = null;
                 console.log('done');
-            }, 4000);
+            }, 2000000);
         },
         closeMsg() {
             console.log('closeMsg()');
