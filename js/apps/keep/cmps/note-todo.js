@@ -35,7 +35,7 @@ export default {
             items = items.map(item => {
                 return {
                     txt: item,
-                    isRead: false,
+                    isDone: false,
                 }
             })
             console.log(items)

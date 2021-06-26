@@ -2,6 +2,7 @@ export default {
     props: ['note'],
     template: `
     <section>
+        <button @click.stop="closeModal">X</button>
     <form @submit.prevent="updateNote">
         <input type="text" v-model="newNote.data.title">
         <img class="note-img":src="newNote.data.url">
@@ -9,7 +10,6 @@ export default {
         <input type="color" v-model=newNote.style.backgroundColor>
         <button hidden></button>
     </form>
-        <button @click.stop="closeModal">X</button>
     </section>
     `,
 

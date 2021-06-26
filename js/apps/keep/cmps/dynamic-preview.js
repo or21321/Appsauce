@@ -5,7 +5,7 @@ import noteTodo from './todo-preview.js'
 export default {
     props: ['note'],
     template: `
-    <component :is="note.type" :note="note" @click.native="select"></component>
+    <component :is="note.type" :note="note" @click.native="select" class="dynamic-preview"></component>
     `,
 
     methods: {

@@ -2,19 +2,19 @@ export default {
     props: ['note'],
     template: `
     <section>
+        <button @click.stop="closeModal">X</button>
     <form @submit.prevent="updateNote">
         <input type="text" v-model="newNote.data.title">
         <input type="text" v-model="newItems" placeholder="Enter comma separated list..">
         <ul class="todo-list">
-            <li v-for="item in newNote.data.list" class="todo-item">
-                <input type="checkbox" id="item.txt" name="item.txt">
+            <li v-for="item in newNote.data.list" class="todo-item" >
+                <input type="checkbox" id="item.txt" name="item.txt" :checked="item.isRead">
                 <label for="item.txt">{{item.txt}}</label>
             </li>
         </ul>
         <input type="color" v-model=newNote.style.backgroundColor>
         <button hidden></button>
     </form>
-        <button @click.stop="closeModal">X</button>
     </section>
     `,
 

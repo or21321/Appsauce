@@ -12,9 +12,9 @@ export default {
             @setInput="addNote"> 
             </component>
             <div>
-                <button @click="setCmp('noteTxt')">txt</button>
-                <button @click="setCmp('noteImg')">img</button>
-                <button @click="setCmp('noteTodo')">todo</button>
+            <span class="note-icon" @click="setCmp('noteTxt')"><img src="icons/txt.png"></span>
+            <span class="note-icon" @click="setCmp('noteImg')"><img src="icons/img.png"></span>
+            <span class="note-icon" @click="setCmp('noteTodo')"><img src="icons/check_box.png"></span>
 
             </div>
     </div>

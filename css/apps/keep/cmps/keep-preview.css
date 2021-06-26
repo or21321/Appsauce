@@ -6,3 +6,7 @@
 .todo-list{
     list-style-type: none;
 }
+
+.dynamic-preview{
+    padding: 10px;
+}

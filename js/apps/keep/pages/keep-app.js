@@ -8,11 +8,7 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
     template: `
     <section class="keep-app">
-        <!-- <header class="keep-header">
-            <button class="menu">Menu</button>
-            <note-filter @filtered="setFilter"></note-filter>
-            <div>LOGO</div>
-        </header> -->
+
         <section class="main-content">
             <dynamic-compose @composed="save"></dynamic-compose>
             <note-list :notes="notesToShow" @removed="removeNote" @selected="selectNote"></note-list>
