@@ -11,9 +11,9 @@ export default {
                     <img src='../../img/icons/keep.png'>
                     <span>Keep</span>
                 </div>
-                <div @click="$router.push('/keep')" class="keep">
-                    <img src='../../img/icons/keep.png'>
-                    <span>Keep</span>
+                <div @click="goToBooksPage" class="book">
+                    <img src='../../img/icons/correct_book.png'>
+                    <span>Book</span>
                 </div>
             </div>
         </div>
@@ -28,6 +28,9 @@ export default {
             console.log('WTF');
             this.isNavModalOpen = !this.isNavModalOpen
             console.log('isNavModalOpen', this.isNavModalOpen);
+        },
+        goToBooksPage() {
+            window.open("https://or21321.github.io/miss-book/#/book")
         }
     }
 }
