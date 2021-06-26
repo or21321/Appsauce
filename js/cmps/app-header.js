@@ -48,8 +48,13 @@ export default {
         },
         setAppFilter(app) {
             console.log('setAppFilter, app', app);
-            if (app === 'email') this.appFilter.email = true
-            if (app === 'keep') this.appFilter.keep = true
+            if (app === 'email'){
+                this.appFilter.email = true
+                this.appFilter.keep = false
+            } else if (app === 'keep'){
+                this.appFilter.keep = true
+                this.appFilter.email = false
+            }
         },
     },
     watch: {
