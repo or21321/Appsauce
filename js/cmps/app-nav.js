@@ -4,15 +4,15 @@ export default {
             ☰
             <div v-if="isNavModalOpen" class="nav-modal">
                 <div @click="$router.push('/email/inbox')" class="email">
-                    <img src='../../img/icons/best-email.png'>
+                    <img src='../../img/icons/best-email.png' alt="https://cdn.icon-icons.com/icons2/2642/PNG/512/google_mail_gmail_logo_icon_159346.png">
                     <span>Email</span>
                 </div>
                 <div @click="$router.push('/keep')" class="keep">
-                    <img src='../../img/icons/keep.png'>
+                    <img src='../../img/icons/keep.png' alt="https://cdn.icon-icons.com/icons2/272/PNG/512/Keep_29993.png">
                     <span>Keep</span>
                 </div>
                 <div @click="goToBooksPage" class="book">
-                    <img src='../../img/icons/correct_book.png'>
+                    <img src='../../img/icons/correct_book.png' alt="https://cdn.icon-icons.com/icons2/272/PNG/512/Play_Books_30007.png">
                     <span>Book</span>
                 </div>
             </div>
