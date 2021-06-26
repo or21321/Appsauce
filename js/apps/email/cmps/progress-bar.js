@@ -4,7 +4,7 @@ export default {
         label: String,
     },
     template: `
-        <div class="progress-bar">
+        <div v-if="percentage" class="progress-bar">
             <div class="info" style="margin-left: 27px;">
                 <label>{{label}}</label>
                 <label class="percentage">{{percentage}}%</label>
