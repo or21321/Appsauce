@@ -1,8 +1,13 @@
 @import url('../cmps/email-header.css');
 @import url('../cmps/email-status.scss');
 @font-face {
-    font-family: roboto;
+    font-family: roboto-Regular;
     src: url('../../../../fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: roboto-Medium;
+    src: url('../../../../fonts//ProductSans-Medium.ttf');
 }
 
 /* icons */
@@ -19,7 +24,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-family: roboto, sans-serif;
+    font-family: roboto-Regular, sans-serif;
 }
 
 .email-filter {
@@ -141,7 +146,43 @@
 /* email-compose */
 
 .email-compose {
+    font-size: .875rem;
+    box-shadow: 0px 4px 10px 2px #B5B5B5;
+    position: fixed;
+    border-radius: 10px;
+    bottom: 0;
+    left: 30%;
     flex-grow: 1;
+    height: 600px;
+    width: 600px;
+    background-color: #ffffff;
+    /* background-color: #404040; */
+}
+
+.email-compose .compose-header {
+    font-family: roboto-Medium;
+    background-color: #404040;
+    padding: 11.5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.email-compose .compose-header p {
+    padding-left: 2px;
+}
+.email-compose .compose-header .close-compose-btn {
+    background-color: #404040;
+    color: #b3b3b3;
+    font-size: 1rem;
+    padding: 5px 7px 5px 7px;
+}
+
+.email-compose .compose-header .close-compose-btn:hover {
+    color: #ffffff;
+    background-color: rgb(179, 177, 177);
 }
 
 .email-compose form {
@@ -204,6 +245,10 @@
 /* .email-features-bar {   
    
 } */
+
+.email-features {
+    margin-bottom: 100px;
+}
 
 .email-features>* {
     padding: 3px;
@@ -309,6 +354,7 @@
 
 .email-main ul {
     flex-grow: 1;
+    /* position: relative; */
     /* display: flex;
     flex-direction: column; */
 }
@@ -346,6 +392,7 @@
     width: 80%;
     height: 80%;
     margin: auto;
+    white-space: pre-line;
 }
 
 .email-details .details-features {

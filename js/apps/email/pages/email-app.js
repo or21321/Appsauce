@@ -3,6 +3,7 @@ import emailList from "../cmps/email-list.js"
 import { emailService } from "../services/email-service.js"
 import { eventBus } from "../../../services/event-bus-service.js"
 import emailStatus from "../cmps/email-status.js"
+import emailCompose from "../cmps/email-compose.js"
 
 export default {
     template: `
@@ -12,7 +13,7 @@ export default {
                 <div class="email-main">
                     <div class="email-features-bar">
 
-                        <div class="email-compose-btn" @click="goToEmailCompose">
+                        <div class="email-compose-btn" @click="showEmailComposeModal">
                             <div>
                                 <img src="../../../../img/icons/compose.png" alt="">
                             </div>
@@ -35,32 +36,28 @@ export default {
                                 <span class="material-icons" style="font-size: 22px">drafts</span><span>Drafts</span>
                             </div>
                         </div >
-                        <email-status 
-                        :percentage="50"
-                        :label="'Read'"
-                        ></email-status>
+                        <email-status></email-status>
+                        <!-- <progress-bar :percentage="100" :label="'Read emails'"></progress-bar> -->
                     </div>
-                        <router-view @inboxSize="setInboxSize"></router-view>
+                        <router-view @inboxSize="setInboxSize"/>
+                        <email-compose :isComposeModalOn="isComposeModalOn"/>
+                        
                 </div>
-                <!-- <div class="email-footer">
-                    <span>Cofferights</span>
-                </div> -->
-
             </section>
             `,
     components: {
-        emailStatus
+        emailStatus,
+        emailCompose
     },
     data() {
         return {
             emails: null,
-            inboxSize: null
+            inboxSize: null,
+            isComposeModalOn: false
         }
     },
     created() {
         console.log('email-APP CREATED!');
-        // this.loadEmails()
-        // eventBus.$on('loadEmails', this.loadEmails())
         eventBus.$emit('setAppFilter', 'email')
         eventBus.$on('emailRemoved', this.setInboxSize)
     },
@@ -90,8 +87,9 @@ export default {
         goToSent() {
             this.$router.push('/email/inbox/sent')
         },
-        goToEmailCompose() {
-            this.$router.push('/email/compose')
+        showEmailComposeModal() {
+            // this.$router.push('/email/compose')
+            this.isComposeModalOn = !this.isComposeModalOn
         },
         showDetails() {
             console.log('showDetails() from email-app');

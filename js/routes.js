@@ -32,7 +32,7 @@ const routes = [
                     },
                     {
                         name: 'Sent',
-                        path:'sent',
+                        path: 'sent',
                         component: emailList
                     },
                 ]
@@ -43,12 +43,12 @@ const routes = [
                 path: 'details/:emailId',
                 component: emailDetails
             },
-            {
-                name: 'Compose',
-                // id like to understand how this works better.
-                path: 'compose/:emailId?',
-                component: emailCompose
-            },
+            // {
+            //     name: 'Compose',
+            //     // id like to understand how this works better.
+            //     path: 'compose/:emailId?',
+            //     component: emailCompose
+            // },
 
         ]
     },

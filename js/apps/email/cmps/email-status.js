@@ -1,56 +1,52 @@
 import { eventBus } from "../../../services/event-bus-service.js"
 import { emailService } from "../services/email-service.js"
+import progressBar from "./progress-bar.js"
+
 
 export default {
-    props: {
-        percentage: Number,
-        label: String,
+    // props: {
+    //     percentage: Number,
+    //     label: String,
+    // },
+    components: {
+        progressBar
     },
     template: `
-    <div class="progress-bar">
-      <div class="info">
-        <label>{{label}}</label>
-        <label class="percentage">{{percentage}}%   </label>
-      </div>
-      <div class="background-bar"></div>
-      <transition appear @before-appear="beforeEnter" @after-appear="enter">
-        <div class="tracker-bar"></div>
-      </transition>
-   </div>
-  </div>
+    <section>
+        <progress-bar :percentage="readEmailsPercentage" :label="'Read -'"></progress-bar>
+    </section>
   `,
-    methods: {
-    }
-    ,
     data() {
         return {
-            emailsLength: null,
-            readEmails: 0
+            emailsLength: 0,
+            readEmails: 0,
+            // readEmailsPercentage: 100
         }
     },
     created() {
         console.log('email-STATUS CREATED!');
         eventBus.$on('updateEmailsStatus', this.updateEmailsStatus)
     },
+    computed: {
+        readEmailsPercentage() {
+            if (!this.emailsLength || !this.readEmails) return 0
+            return Math.floor((this.readEmails / this.emailsLength ) * 100)
+        }
+    },
     methods: {
         updateEmailsStatus() {
+            // this.readEmails = 0
+            // this.emailsLength = 0
             emailService.query()
                 .then(emails => {
+                    let readEmailsCount = 0
                     this.emailsLength = emails.length
                     emails.forEach(email => {
-                        if (email.isRead === 'read') ++this.readEmails
+                        if (email.isRead === 'read') ++readEmailsCount
+                        if (readEmailsCount > this.readEmails) this.readEmails = readEmailsCount
                     })
                 })
         },
-        beforeEnter(el) {
-            console.log('before enter');
-            el.style.width = 0
-        },
-        enter(el) {
-            console.log('enter', this.percentage);
-            el.style.width = `${this.percentage}%`
-            el.style.transition = `width 1s linear`
-        }
     },
     watch: {
         'readEmails': {

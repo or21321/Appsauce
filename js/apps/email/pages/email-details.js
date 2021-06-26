@@ -1,5 +1,7 @@
 import { emailService } from "../services/email-service.js"
 import { showMsg } from "../../../services/event-bus-service.js"
+import { eventBus } from "../../../services/event-bus-service.js"
+import { updateEmailsStatus } from "../../../services/event-bus-service.js"
 
 export default {
     template: `
@@ -81,7 +83,10 @@ export default {
                         if (email && email.isRead === 'unread') {
                             email.isRead = 'read'
                             emailService.save(email)
-                            console.log('saved email after setting .isRead = true');
+                                .then(() => {
+                                    updateEmailsStatus()
+                                    console.log('saved email after setting .isRead = true');
+                                })
                         }
                     })
             }
