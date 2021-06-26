@@ -35,13 +35,15 @@ export default {
     },
     methods: {
         updateEmailsStatus() {
-            this.readEmails = 0
-            this.emailsLength = 0
+            // this.readEmails = 0
+            // this.emailsLength = 0
             emailService.query()
                 .then(emails => {
+                    let readEmailsCount = 0
                     this.emailsLength = emails.length
                     emails.forEach(email => {
-                        if (email.isRead === 'read') ++this.readEmails
+                        if (email.isRead === 'read') ++readEmailsCount
+                        if (readEmailsCount > this.readEmails) this.readEmails = readEmailsCount
                     })
                 })
         },

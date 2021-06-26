@@ -24,6 +24,7 @@ export default {
             el.style.width = 0
         },
         enter(el) {
+            console.log('el', el);
             console.log('enter', this.percentage);
             el.style.width = `${this.percentage}%`
             el.style.transition = `width 1s linear`
