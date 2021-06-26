@@ -7,15 +7,15 @@ export default {
         label: String,
     },
     template: `
-    <div class="progress-bar">
-      <div class="info">
-        <label>{{label}}</label>
-        <label class="percentage">{{percentage}}%   </label>
-      </div>
-      <div class="background-bar"></div>
-      <transition appear @before-appear="beforeEnter" @after-appear="enter">
-        <div class="tracker-bar"></div>
-      </transition>
+        <div class="progress-bar">
+            <div class="info">
+                <label>{{label}}</label>
+                <label class="percentage">{{percentage}}%</label>
+            </div>
+            <div class="background-bar"></div>
+            <transition appear @before-appear="beforeEnter" @after-appear="enter">
+                <div class="tracker-bar"></div>
+            </transition>
    </div>
   </div>
   `,
