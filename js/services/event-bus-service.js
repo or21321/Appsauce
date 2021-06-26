@@ -6,6 +6,6 @@ export function showMsg(msg) {
 }
 
 export function updateEmailsStatus() {
-    console.log('from eventBus updateEmailsStatus()');
+    console.log('updateEmailsStatus()');
     eventBus.$emit('updateEmailsStatus')
 }

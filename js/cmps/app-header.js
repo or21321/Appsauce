@@ -1,7 +1,7 @@
 import emailFilter from '../apps/email/cmps/email-filter.js'
 import { eventBus } from '../services/event-bus-service.js'
 import noteFilter from '../apps/keep/cmps/note-filter.js'
-// import nav from ''
+import appNav from './app-nav.js'
 
 export default {
     template: `
@@ -19,10 +19,12 @@ export default {
                 </div>
                 <email-filter v-if="appFilter.email" />
                 <note-filter v-if="appFilter.keep"/>
-                <div class="email-nav">
-                ☰
+                <!-- <div class="email-nav">
+                ☰ -->
                     <!-- need to have nav comp here -->
-                </div>
+                <!-- </div> -->
+                <!-- change class! -->
+                <app-nav></app-nav>
             </div>
     `,
     data() {
@@ -35,7 +37,8 @@ export default {
     },
     components: {
         emailFilter,
-        noteFilter
+        noteFilter,
+        appNav
     },
     created() {
         eventBus.$on('setAppFilter', this.setAppFilter)

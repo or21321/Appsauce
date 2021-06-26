@@ -6,6 +6,7 @@
 @import url('./apps/keep/cmps/keep-compose.css');
 @import url('./apps/keep/cmps/keep-preview.css');
 @import url('./cmps/user-msg.css');
+@import url('./cmps/app-header.css');
 /* @import url('./apps/keep/cmps/keep-list.css'); */
 
 * {
@@ -55,6 +56,7 @@
 html {
     height: 100%;
     font-family: roboto, sans-serif;
+    overflow: hidden;
 }
 
 body {

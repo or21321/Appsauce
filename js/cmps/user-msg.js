@@ -14,7 +14,7 @@ export default {
                 <!-- <h4 v-if="isSuccess">SUCCESS!</h4> -->
                 <!-- <h4 v-else>ERROR!</h4> -->
                 <p>{{msg.txt}}</p>
-                <router-link v-if="msg.link" :to="msg.link"><span @click="closeMsg">Check it out!</span></router-link>
+                <router-link v-if="msg.link" :to="msg.link"><span @click="closeMsgAndComposeModal">Check it out!</span></router-link>
             </div>
         </div>
     `,
@@ -36,12 +36,19 @@ export default {
             this.closeMsg()
             this.msg = msg;
             this.timeOut = setTimeout(() => {
-                if (this.msg.link) this.$router.push('/email/inbox')
+                if (this.msg.link) eventBus.$emit('closeComposeModal')
                 this.msg = null;
                 console.log('done');
             }, 4000);
         },
         closeMsg() {
+            console.log('closeMsg()');
+            clearTimeout(this.timeOut)
+            this.timeOut = null
+            this.msg = null
+        },
+        closeMsgAndComposeModal() {
+            eventBus.$emit('closeComposeModal')
             console.log('closeMsg()');
             clearTimeout(this.timeOut)
             this.timeOut = null

@@ -95,7 +95,9 @@ export default {
     methods: {
         reply() {
             console.log('REPLY');
-            this.$router.push('/email/compose/' + this.email.id)
+            // this.$router.push('/email/compose/' + this.email.id)
+            this.$emit('replyToEmail', this.email.id)
+            // eventBus.$emit('toggleComposeModal')
             // need to make reply on compose page look better and be smarter!
         },
         toggleEmailStarred() {

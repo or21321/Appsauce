@@ -1,3 +1,4 @@
+@import url('./app-nav.css');
 @font-face {
     font-family: Google sans-regular;
     src: url('../../../../fonts/Product-Sans-Regular.ttf');
@@ -10,7 +11,6 @@
 
 .email-header-container {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     border-top: 1px solid #f1f3f4;
     border-bottom: 1px solid #f1f3f4;
@@ -35,27 +35,4 @@
 
 .email-header-logo span:not(:first-child) {
     margin-left: -4.5px;
-}
-
-/* .email-header-logo>*{
-    margin: 0;
-} */
-
-.email-nav {
-    padding: 10px;
-    border-radius: 50%;
-    color: #5f6368;
-    margin-right: 30px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.email-nav:hover {}
-
-.email-nav:hover {
-    cursor: pointer;
-    background-color: #f1f3f4;
-    /* -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4;
-    box-shadow: 0px 0px 4px 2px #F1F3F4; */
 }

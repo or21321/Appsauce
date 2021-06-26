@@ -13,7 +13,7 @@ export default {
                 <div class="email-main">
                     <div class="email-features-bar">
 
-                        <div class="email-compose-btn" @click="toggleEmailComposeModal">
+                        <div class="email-compose-btn" @click="toggleComposeModal">
                             <div>
                                 <img src="../../../../img/icons/compose.png" alt="">
                             </div>
@@ -38,8 +38,11 @@ export default {
                         </div >
                         <email-status></email-status>
                     </div>
-                        <router-view @inboxSize="setInboxSize"/>
-                        <email-compose @closeComposeModal="isComposeModalOn=false" :isComposeModalOn="isComposeModalOn"/>
+                        <router-view @replyToEmail="setEmailIdToReply" @inboxSize="setInboxSize"/>
+                        <email-compose v-if="isComposeModalOn"
+                        @closeComposeModal="isComposeModalOn=false" 
+                        :emailId="emailIdToReply"
+                        :isComposeModalOn="isComposeModalOn"/>
                         
                 </div>
             </section>
@@ -52,13 +55,16 @@ export default {
         return {
             emails: null,
             inboxSize: null,
-            isComposeModalOn: false
+            isComposeModalOn: false,
+            emailIdToReply: null
         }
     },
     created() {
         console.log('email-APP CREATED!');
         eventBus.$emit('setAppFilter', 'email')
         eventBus.$on('emailRemoved', this.setInboxSize)
+        eventBus.$on('closeComposeModal', this.isComposeModalOn = false)
+        eventBus.$on('toggleComposeModal', this.toggleComposeModal)
     },
     destroyed() {
         console.log('email-APP DESTROYED');
@@ -86,11 +92,17 @@ export default {
         goToSent() {
             this.$router.push('/email/inbox/sent')
         },
-        toggleEmailComposeModal() {
+        toggleComposeModal() {
             // this.$router.push('/email/compose')
             console.log('CLICKED');
+
             this.isComposeModalOn = !this.isComposeModalOn
             console.log(this.isComposeModalOn);
+        },
+        setEmailIdToReply(emailId) {
+            console.log('setEmailIdToReply()', emailId);
+            this.emailIdToReply = emailId
+            this.isComposeModalOn = !this.isComposeModalOn
         },
         showDetails() {
             console.log('showDetails() from email-app');

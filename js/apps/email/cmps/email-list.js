@@ -129,6 +129,7 @@ export default {
                         txt: 'Email deleted!',
                         type: 'success'
                     }
+                    updateEmailsStatus()
                     showMsg(msg)
                     eventBus.$emit('emailRemoved')
                 })

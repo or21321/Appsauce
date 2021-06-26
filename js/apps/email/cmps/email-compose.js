@@ -1,5 +1,6 @@
 import { emailService } from "../services/email-service.js";
 import { showMsg } from "../../../services/event-bus-service.js";
+import { updateEmailsStatus } from "../../../services/event-bus-service.js";
 
 export default {
     props: ['isComposeModalOn', 'emailId'],
@@ -11,9 +12,9 @@ export default {
                   <button @click="closeComposeModal" class="close-compose-btn">x</button>
           </div>
         <form @submit.prevent="sendEmail">
-            <!-- <input v-model="emailToEdit.sendTo" type="text" placeholder="Recipients">
+            <input v-model="emailToEdit.sendTo" type="text" placeholder="Recipients">
             <input v-model="emailToEdit.subject" type="text" placeholder="Subject">
-            <textarea v-model="emailToEdit.body" placeholder="Body" cols="30" rows="10"></textarea> -->
+            <textarea v-model="emailToEdit.body" placeholder="Body" cols="30" rows="10"></textarea>
             <button>Send</button>
         </form>
         <!-- <pre>{{carToEdit}}</pre> -->
@@ -22,7 +23,8 @@ export default {
     data() {
         return {
             emailToEdit: null,
-            composeModalStatusOn: false
+            composeModalStatusOn: false,
+            emailIdToReply: null
         }
     },
     created() {
@@ -30,6 +32,8 @@ export default {
         // if (!this.emailId) console.log('COMPOSE');
         // if (this.emailId) console.log('REPLY');
         console.log(this.composeModalStatusOn);
+        if (this.emailId) this.emailIdToReply = this.emailId
+        console.log('emailIdToReply', this.emailIdToReply);
         // this.composeModalStatusOn = this.isComposeModalOn
     },
     watch: {
@@ -38,6 +42,27 @@ export default {
             handler() {
                 console.log('from watcher', this.isComposeModalOn);
                 this.composeModalStatusOn = this.isComposeModalOn
+            }
+        },
+        'emailId': {
+            immediate: true,
+            handler() {
+                if (this.emailId) {
+                    console.log('REPLY');
+                    emailService.getById(this.emailId)
+                        .then(email => {
+                            console.log(email);
+                            email.sendTo = 'Re: ' + email.sentBy
+                            this.emailToEdit = email
+                            // this.emailToEdit.sendTo = 'Re: ' + email.sentBy
+                            // this.emailToEdit.subjet = 'Subject' + this.emailToEdit.subject
+                        })
+                }
+                else {
+                    console.log('COMPOSE');
+                    this.emailToEdit = emailService.getEmptyEmail();
+                    console.log('emailToEdit = getEmptyEmail(), returns:', this.emailToEdit);
+                }
             }
         }
     },
@@ -81,6 +106,7 @@ export default {
                         type: 'success',
                         link: `/email/details/${sentEmail.id}`
                     }
+                    updateEmailsStatus()
                     showMsg(msg)
                     // setTimeout(() => {
                     //     this.$router.push('/email/inbox')
