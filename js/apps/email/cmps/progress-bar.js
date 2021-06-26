@@ -6,8 +6,8 @@ export default {
     template: `
         <div v-if="percentage" class="progress-bar">
             <div class="info" style="margin-left: 27px;">
-                <label>{{label}}</label>
-                <label class="percentage">{{percentage}}%</label>
+                <label style="font-family: Google sans-medium, sans-serif; font-size: 15px;">{{label}}</label>
+                <label style="font-family: Google sans-medium, sans-serif; font-size: 15px;" class="percentage">{{percentage}}%</label>
             </div>
             <div class="background-bar"></div>
             <!-- If you are a metargel and watching this, please,
@@ -34,6 +34,7 @@ export default {
         'percentage': {
             immediate: true,
             handler() {
+                if (!this.$refs.bar) return
                 this.enter(this.$refs.bar)
             }
         }
