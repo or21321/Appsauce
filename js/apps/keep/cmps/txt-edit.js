@@ -7,9 +7,9 @@ export default {
     <form @submit.prevent="updateNote">
         <input type="text" v-model="newNote.data.title">
         <input type="text" v-model="newNote.data.txt">
-        <input type="color" v-model=newNote.style.backgroundColor>
         <button hidden></button>
     </form>
+    <input type="color" v-model=newNote.style.backgroundColor>
     </section>
     `,
 
