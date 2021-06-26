@@ -3,12 +3,9 @@
 @import url('./apps/keep/cmps/note-edit.css');
 @import url('./apps/keep/pages/keep-app.css');
 @import url('./apps/keep/cmps/keep-compose.css');
-<<<<<<< HEAD
 @import url('./apps/keep/cmps/keep-preview.css');
-=======
 @import url('./cmps/user-msg.css');
 /* @import url('./apps/keep/cmps/keep-list.css'); */
->>>>>>> cd19a25e12ec065db40b2becdd84ae4aba6e570b
 
 * {
     box-sizing: border-box;
