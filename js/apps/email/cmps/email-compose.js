@@ -1,4 +1,5 @@
 import { emailService } from "../services/email-service.js";
+import { showMsg } from "../../../services/event-bus-service.js";
 
 export default {
     template: `
@@ -22,8 +23,8 @@ export default {
     created() {
         console.log('email-COMPOSE CREATED!');
     },
-    watch: {    
-        'this.$route.params.emailId': { 
+    watch: {
+        'this.$route.params.emailId': {
             immediate: true,
             handler() {
                 const { emailId } = this.$route.params;
@@ -56,9 +57,17 @@ export default {
         sendEmail() {
             console.log('sendEmail()', this.emailToEdit);
             emailService.sendEmail(this.emailToEdit)
-        setTimeout(() => {
-            this.$router.push('/email/inbox')
-        }, 2500)
+                .then(sentEmail => {
+                    const msg = {    
+                        txt: 'Email sent!',
+                        type: 'success',
+                        link: `/email/details/${sentEmail.id}`
+                    }
+                    showMsg(msg)
+                    // setTimeout(() => {
+                    //     this.$router.push('/email/inbox')
+                    // }, 4000)
+                })
         },
     }
 }

@@ -1,4 +1,5 @@
 @import url('../cmps/email-header.css');
+@import url('../cmps/email-status.scss');
 @font-face {
     font-family: roboto;
     src: url('../../../../fonts/Roboto-Regular.ttf');
@@ -22,20 +23,45 @@
 }
 
 .email-filter {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    display: flex;
+    align-items: center;
+    background-color: #f1f3f4;
+    /* padding: 5px; */
+    border-radius: 8px;
+    transition: background-color .13s;
+}
+
+.email-filter input:focus~.email-filter span:nth-child(1) {
+    background-color: #ffffff;
+}
+
+.email-filter span:nth-child(1) {
+    margin-left: 13px;
+    color: #5f6368;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.email-filter span:nth-child(1):hover {
+    cursor: pointer;
+    background-color: #e6e6e6;
 }
 
 .email-filter input {
+    font-size: 0.95rem;
     border: 0px;
-    padding: 5px;
-    border-radius: 5px;
     color: #070707;
     background-color: #f1f3f4;
-    padding: 15px 230px 15px 20px;
+    padding: 16px 428px 15px 17px;
+    transition: background-color .13s;
+    /* transition: box-shadow 3s; */
+    /* padding: 15px 230px 15px 20px; */
     /* height: 50px; */
 }
 
-.email-filter input:focus {
+.email-filter:focus-within {
+    /* background-color: #fff; */
     background-color: #ffffff;
     outline: none;
     box-shadow: inset 0 - 2px black;
@@ -43,30 +69,72 @@
     box-shadow: 0px 0px 4px 2px #F1F3F4;
 }
 
+/* .email-filter input {
+    font-size: 0.9rem;
+    border: 0px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #070707;
+    background-color: #f1f3f4;
+    padding: 16px 533px 15px 20px; */
+
+/* } */
+
+.email-filter select:focus {
+    background-color: #ffffff;
+    outline: none;
+}
+
+.email-filter input:focus {
+    background-color: #ffffff;
+    border: 0px;
+    outline: none;
+    /* box-shadow: inset 0 - 2px black;
+    -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4;
+    box-shadow: 0px 0px 4px 2px #F1F3F4; */
+}
+
+.email-filter input:focus~select {
+    background-color: #ffffff;
+}
+
+/* .email-filter select:focus~input {
+    background-color: unset;
+} */
+
 .email-filter select {
+    transition: background-color .13s;
     background-color: #f1f3f4;
     border: 0px;
     padding: 5px;
     border-radius: 5px;
+    border: 0px;
     color: #878a8e;
     /* height: 50px; */
+    appearance: none;
 }
 
-.email-filter select:focus {
-    -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4;
-    box-shadow: 0px 0px 4px 2px #F1F3F4;
-    /* background-color: #fff; */
-}
+/* .email-filter select:focus { */
+
+/* -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4; */
+
+/* box-shadow: 0px 0px 4px 2px #F1F3F4; */
+
+/* background-color: #fff; */
+
+/* } */
 
 .email-filter select:hover {
     cursor: pointer;
+    /* background-color: #e6e6e6; */
+    /* padding: 10px; */
 }
 
 /* .email-filter select option {   
     border: 0px;
 } */
 
-.email-filter select>*:hover { 
+.email-filter select>*:hover {
     cursor: pointer;
 }
 
@@ -90,9 +158,11 @@
 
 /* email-main */
 
+/* that should be infeatures */
+
 .email-compose-btn {
     /* font isnt accurate yet */
-    font-family: Google sans, sans-serif;
+    font-family: Google sans-medium, sans-serif;
     display: flex;
     align-items: center;
     margin-inline-start: 15px;
@@ -102,25 +172,28 @@
     margin: 16px 0 16px 8px;
     padding: 0 0 0 8px;
     height: 48px;
+    width: fit-content;
 }
 
 .email-compose-btn :nth-child(1) {
-    padding-left: 4px;
+    padding: 2px 0 0 3px;
 }
 
 .email-compose-btn :nth-child(2) {
     padding-right: 1.5rem;
     color: #3c4043;
-    letter-spacing: .25px;
-    margin-left: 8px;
-    line-height: 25px;
+    letter-spacing: .45px;
+    margin-left: 11px;
+    /* line-height: 25px; */
+    font-size: .875rem;
     /* text-align: center; */
 }
 
 .email-compose-btn:hover {
     cursor: pointer;
+    background-color: #fafafb;
     -webkit-box-shadow: 0 1px 3px #c2c2c4;
-    box-shadow: 0 4px 8px 3px #c2c2c4;
+    box-shadow: 0 4px 8px 1px #c2c2c4;
 }
 
 .email-main {
@@ -140,14 +213,25 @@
     color: #636466;
     display: flex;
     align-items: center;
-    margin-inline-start: 15px;
+    padding-inline-start: 26px;
     padding-block-end: 5px;
     padding-block-start: 5px;
-    padding-inline-end: 100px;
+    /* padding-inline-end: 100px; */
+}
+
+.email-features .inbox-span {
+    color: #242528;
+    font-weight: 1000;
+    padding-right: 124px;
+    /* padding-right: 144px; */
+}
+
+.email-features .inbox-size {
+    padding-right: 24px;
 }
 
 .email-features>* .material-icons {
-    margin-inline-end: 15px;
+    margin-inline-end: 17px;
 }
 
 .email-features>*:hover {
@@ -158,28 +242,59 @@
 /* email-preview */
 
 .email-preview {
-    flex-grow: 1;
     display: flex;
     justify-content: space-between;
-    margin-block-end: 1.35rem;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 8px;
+    /* border-radius: 10px; */
+    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
 }
 
 .email-preview:hover {
     cursor: pointer;
-    background-color: lightyellow;
+    box-shadow: 0px 1px 2px 1px #b1b2b4;
+    background-color: #fff;
+    /* box-shadow: 0px 1px 2px 1px #DADCE0 */
 }
 
-.email-preview span {
+.email-main ul .email-preview:first-child {
+    /* box-shadow: 0 -1px 0 0 rgb(100 121 143 / 12%), inset 0 -1px 0 0 rgb(100 121 143 / 12%); */
+}
+
+/* .email-preview ul .email-preview:first-child:hover {
+    box-shadow: 0px 1px 2px 1px #DADCE0
+} */
+
+.email-preview.starred {
+    background-color: rgba(242, 245, 245, 0.8);
+}
+
+.email-preview>* {
     /* flex-grow: 1; */
     /* ? need to have better solution here ? */
-    width: 10rem;
+    /* width: 10rem; */
+    flex-basis: 10rem;
+    display: flex;
+    align-items: center;
+}
+
+.email-preview>*:not(:nth-child(3)) {
+    flex-grow: 1;
+}
+
+.email-preview :nth-child(3) {
+    flex-grow: 3;
 }
 
 .delete-preview-btn {
     opacity: 0;
     transition: opacity .15s;
+    padding: 7px;
+}
+
+.delete-preview-btn:hover {
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: rgb(46, 45, 45);
 }
 
 .email-preview:hover .delete-preview-btn {
@@ -252,7 +367,8 @@
 
 .icon:hover {
     cursor: pointer;
-    background-color: #f1f3f4;
+    background-color: #ececec;
+    /* background-color: #5f6368; */
 }
 
 /* Tooltip text */

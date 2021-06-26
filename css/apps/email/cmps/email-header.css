@@ -1,6 +1,11 @@
 @font-face {
-    font-family: Google sans;
+    font-family: Google sans-regular;
     src: url('../../../../fonts/Product-Sans-Regular.ttf');
+}
+
+@font-face {
+    font-family: Google sans-medium;
+    src: url('../../../../fonts/ProductSans-Medium.ttf');
 }
 
 .email-header-container {
@@ -9,29 +14,28 @@
     align-items: center;
     border-top: 1px solid #f1f3f4;
     border-bottom: 1px solid #f1f3f4;
-    padding: 7px;
+    padding: 8px;
     margin-inline-start: 3px;
 }
 
 .email-header-logo {
     font-size: 1.4rem;
-    margin-left: 30px;
-    margin-right: 126px;
+    margin-left: 22px;
+    margin-right: 133px;
 }
 
 .email-header-logo:hover {
     cursor: pointer;
 }
 
-.email-header-logo span{  
+.email-header-logo span {
     font-family: Google sans, sans-serif;
     font-weight: 800;
-
 }
-.email-header-logo span:not(:first-child) {   
+
+.email-header-logo span:not(:first-child) {
     margin-left: -4.5px;
 }
-
 
 /* .email-header-logo>*{
     margin: 0;
@@ -42,14 +46,16 @@
     border-radius: 50%;
     color: #5f6368;
     margin-right: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
-.email-nav:hover {
-}
+.email-nav:hover {}
 
 .email-nav:hover {
-cursor: pointer;
-background-color: #f1f3f4;
+    cursor: pointer;
+    background-color: #f1f3f4;
     /* -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4;
     box-shadow: 0px 0px 4px 2px #F1F3F4; */
 }
