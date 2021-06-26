@@ -2,9 +2,9 @@ import { emailService } from "../services/email-service.js";
 import { showMsg } from "../../../services/event-bus-service.js";
 
 export default {
-    props: ['isComposeModalOn'],
+    props: ['isComposeModalOn', 'emailId'],
     template: `
-      <section v-if="isComposeModalOn" class="email-compose">
+      <section v-if="composeModalStatusOn" class="email-compose">
           <!-- <section v-if="emailToEdit" class="email-compose"> -->
               <div class="compose-header">
                   <p>New Message</p>
@@ -21,13 +21,25 @@ export default {
     `,
     data() {
         return {
-            emailToEdit: null
+            emailToEdit: null,
+            composeModalStatusOn: false
         }
     },
     created() {
         console.log('email-COMPOSE CREATED!');
         // if (!this.emailId) console.log('COMPOSE');
         // if (this.emailId) console.log('REPLY');
+        console.log(this.composeModalStatusOn);
+        // this.composeModalStatusOn = this.isComposeModalOn
+    },
+    watch: {
+        'isComposeModalOn': {
+            immediate: true,
+            handler() {
+                console.log('from watcher', this.isComposeModalOn);
+                this.composeModalStatusOn = this.isComposeModalOn
+            }
+        }
     },
     // watch: {
     //     'this.$route.params.emailId': {
@@ -76,7 +88,8 @@ export default {
                 })
         },
         closeComposeModal() {
-            this.isComposeModalOn = false
+            this.composeModalStatusOn = false
+            this.$emit('closeComposeModal')
         }
     }
 }

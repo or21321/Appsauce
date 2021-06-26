@@ -13,7 +13,7 @@ export default {
                 <div class="email-main">
                     <div class="email-features-bar">
 
-                        <div class="email-compose-btn" @click="showEmailComposeModal">
+                        <div class="email-compose-btn" @click="toggleEmailComposeModal">
                             <div>
                                 <img src="../../../../img/icons/compose.png" alt="">
                             </div>
@@ -37,10 +37,9 @@ export default {
                             </div>
                         </div >
                         <email-status></email-status>
-                        <!-- <progress-bar :percentage="100" :label="'Read emails'"></progress-bar> -->
                     </div>
                         <router-view @inboxSize="setInboxSize"/>
-                        <email-compose :isComposeModalOn="isComposeModalOn"/>
+                        <email-compose @closeComposeModal="isComposeModalOn=false" :isComposeModalOn="isComposeModalOn"/>
                         
                 </div>
             </section>
@@ -87,9 +86,11 @@ export default {
         goToSent() {
             this.$router.push('/email/inbox/sent')
         },
-        showEmailComposeModal() {
+        toggleEmailComposeModal() {
             // this.$router.push('/email/compose')
+            console.log('CLICKED');
             this.isComposeModalOn = !this.isComposeModalOn
+            console.log(this.isComposeModalOn);
         },
         showDetails() {
             console.log('showDetails() from email-app');
