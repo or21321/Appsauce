@@ -20,7 +20,7 @@ export default {
     computed: {
         formattedTxt() {
             let txt = this.txt
-            console.log('this.txt', txt);
+            // console.log('this.txt', txt);
             txt = txt.split(' ')
 
             // if (this.showMoreDesc || description.length <= 10) return this.book.description
