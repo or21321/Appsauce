@@ -2,6 +2,7 @@
 import emailList from "../cmps/email-list.js"
 import { emailService } from "../services/email-service.js"
 import { eventBus } from "../../../services/event-bus-service.js"
+import emailStatus from "../cmps/email-status.js"
 
 export default {
     template: `
@@ -36,6 +37,7 @@ export default {
                         </div >
                     </div>
                         <router-view @inboxSize="setInboxSize"></router-view>
+                        <email-status></email-status>
                 </div>
                 <!-- <div class="email-footer">
                     <span>Cofferights</span>
@@ -43,7 +45,7 @@ export default {
             </section>
             `,
     components: {
-        // emailHeader,
+        emailStatus
     },
     data() {
         return {
@@ -56,6 +58,7 @@ export default {
         // this.loadEmails()
         // eventBus.$on('loadEmails', this.loadEmails())
         eventBus.$emit('setAppFilter', 'email')
+        eventBus.$on('emailRemoved', this.setInboxSize)
     },
     destroyed() {
         console.log('email-APP DESTROYED');
@@ -63,7 +66,14 @@ export default {
     computed: {
     },
     methods: {
-        setInboxSize(emailsLength) {   
+        setInboxSize(emailsLength) {
+            if (!emailsLength) {
+                emailService.query()
+                    .then(emails => {
+                        console.log('emails.length', emails.length);
+                        this.inboxSize = emails.length
+                    })
+            }
             console.log('INBOX SIZE', emailsLength);
             this.inboxSize = emailsLength
         },

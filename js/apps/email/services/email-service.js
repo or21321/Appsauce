@@ -32,7 +32,7 @@ function querySentEmails() {
     return storageService.query('sentEmails')
         .then(emails => {
             if (!emails || !emails.length) {
-                return Promise.reject({txt: 'Dont have any sent emails', type: 'error'})
+                return Promise.reject({ txt: 'Dont have any sent emails', type: 'error' })
             }
             // utilService.saveToStorage('sentEmails', emails)
             return emails
@@ -81,9 +81,15 @@ function toggleEmailStarred(emailId) {
 
 function _createEmails() {
     return [
-        { sentBy: 'Guy', subject: 'Wassap?', body: 'Pick up!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
-        { sentBy: 'Puki', subject: 'Ad..', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
-        { sentBy: 'Shluki', subject: 'Another ad', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        { sentBy: 'Tomer', subject: 'Wassap?', body: 'Or! i have been looking to to have a talk with you, its not super urgent but please call me when you can !', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
+        {
+            sentBy: 'Mary', subject: 'Ad..', body: 'Hello again my dear, I am now contacting you for the third time, since my first email to you, on June, 5th 2021. I must admit that Im surprised you still havent given me an answer...Or your forecast for the next three months Or, is here, and you need to take advantage of it RIGHT NOW! This is your chance to receive guidance about your future opportunities.Ever since my first e- mail, Ive been trying to tell you about the amazing configurations happening in your sky and the opportunities that await you.So many positive changes in your love life, professional life, different projects and more are awaiting you ...With your approval, I can help you benefit from all of these configurations, but ONLY if you give me your green light.Think carefully about the decision you will make.Personally, I think it would be a massive shame if you missed out on this: I cannot stress this enough - your life truly depends on it! Dont worry Or, it is all still available for you on your personal page I created for you.',
+            isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false,
+        },
+        {
+            sentBy: 'GitGuardian', body: 'GitGuardian security alertGitGuardian has detected the following Google API Key exposed within your GitHub account.Details- Secret type: Google API Key- Repository: or21321/miss-book- Pushed date: June 22nd 2021, 19:09:14 UTC Stay safe on GitHubKeep your protection active by logging in with your GitHub account:Protect Your GitHub ReposRead our guide to remediate an exposed secret.GitGuardian is an automated secrets detection service trusted by 150,000 developers worldwide.GitGuardian-badge',
+            subject: 'Oops i did it again', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false,
+        },
         { sentBy: 'Farem', subject: 'Another ad', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
         { sentBy: 'Tinder', subject: 'We will help you', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, },
         { sentBy: 'okCupid', subject: 'We will help you more', body: 'Buy me!', isRead: 'unread', sentAt: 1551133930594, id: utilService.makeId(), isStarred: false, }

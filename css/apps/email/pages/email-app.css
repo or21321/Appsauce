@@ -28,6 +28,7 @@
     background-color: #f1f3f4;
     /* padding: 5px; */
     border-radius: 8px;
+    transition: background-color .13s;
 }
 
 .email-filter input:focus~.email-filter span:nth-child(1) {
@@ -35,7 +36,7 @@
 }
 
 .email-filter span:nth-child(1) {
-    margin-left: 17px;
+    margin-left: 13px;
     color: #5f6368;
     padding: 8px;
     border-radius: 50%;
@@ -78,6 +79,11 @@
 
 /* } */
 
+.email-filter select:focus {
+    background-color: #ffffff;
+    outline: none;
+}
+
 .email-filter input:focus {
     background-color: #ffffff;
     border: 0px;
@@ -87,11 +93,16 @@
     box-shadow: 0px 0px 4px 2px #F1F3F4; */
 }
 
-.email-filter input:focus ~ select {
+.email-filter input:focus~select {
     background-color: #ffffff;
 }
 
+/* .email-filter select:focus~input {
+    background-color: unset;
+} */
+
 .email-filter select {
+    transition: background-color .13s;
     background-color: #f1f3f4;
     border: 0px;
     padding: 5px;
@@ -103,14 +114,18 @@
 }
 
 /* .email-filter select:focus { */
-    /* -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4; */
-    /* box-shadow: 0px 0px 4px 2px #F1F3F4; */
-    /* background-color: #fff; */
+
+/* -webkit-box-shadow: 0px 0px 4px 2px #F1F3F4; */
+
+/* box-shadow: 0px 0px 4px 2px #F1F3F4; */
+
+/* background-color: #fff; */
+
 /* } */
 
 .email-filter select:hover {
     cursor: pointer;
-    background-color: #e6e6e6;
+    /* background-color: #e6e6e6; */
     /* padding: 10px; */
 }
 
@@ -226,28 +241,59 @@
 /* email-preview */
 
 .email-preview {
-    flex-grow: 1;
     display: flex;
     justify-content: space-between;
-    margin-block-end: 1.35rem;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 8px;
+    /* border-radius: 10px; */
+    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
 }
 
 .email-preview:hover {
     cursor: pointer;
-    background-color: lightyellow;
+    box-shadow: 0px 1px 2px 1px #b1b2b4;
+    background-color: #fff;
+    /* box-shadow: 0px 1px 2px 1px #DADCE0 */
 }
 
-.email-preview span {
+.email-main ul .email-preview:first-child {
+    /* box-shadow: 0 -1px 0 0 rgb(100 121 143 / 12%), inset 0 -1px 0 0 rgb(100 121 143 / 12%); */
+}
+
+/* .email-preview ul .email-preview:first-child:hover {
+    box-shadow: 0px 1px 2px 1px #DADCE0
+} */
+
+.email-preview.starred {
+    background-color: rgba(242, 245, 245, 0.8);
+}
+
+.email-preview>* {
     /* flex-grow: 1; */
     /* ? need to have better solution here ? */
-    width: 10rem;
+    /* width: 10rem; */
+    flex-basis: 10rem;
+    display: flex;
+    align-items: center;
+}
+
+.email-preview>*:not(:nth-child(3)) {
+    flex-grow: 1;
+}
+
+.email-preview :nth-child(3) {
+    flex-grow: 3;
 }
 
 .delete-preview-btn {
     opacity: 0;
     transition: opacity .15s;
+    padding: 7px;
+}
+
+.delete-preview-btn:hover {
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: rgb(46, 45, 45);
 }
 
 .email-preview:hover .delete-preview-btn {
@@ -320,7 +366,8 @@
 
 .icon:hover {
     cursor: pointer;
-    background-color: #f1f3f4;
+    background-color: #ececec;
+    /* background-color: #5f6368; */
 }
 
 /* Tooltip text */

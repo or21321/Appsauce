@@ -39,7 +39,7 @@ export default {
                 if (this.msg.link) this.$router.push('/email/inbox')
                 this.msg = null;
                 console.log('done');
-            }, 400000);
+            }, 4000);
         },
         closeMsg() {
             console.log('closeMsg()');

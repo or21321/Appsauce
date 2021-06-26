@@ -11,9 +11,10 @@ export default {
                 <!-- <p>{{formatDate}}, {{formatTime}}</p> -->
                 <div class="details-features">
                     <div class="icon" @click="toggleEmailStarred">
-                        <span v-if="isStarred" class="material-icons" style="font-size: 22px; color:#f7cb4d">star</span>
+                        <span v-if="email.isStarred" class="material-icons" style="font-size: 22px; color:#f7cb4d">star</span>
                         <span v-else class="material-icons" style="font-size: 22px">star_border</span>
-                        <span class="tooltip-text">Not starred</span>
+                        <span v-if="email.isStarred" class="tooltip-text" style="font-size: 14px">Starred</span>
+                        <span v-else class="tooltip-text" style="font-size: 14px">Not starred</span>
                     </div>
                     <div class="icon" @click="reply">
                         <span class="material-icons" style="font-size: 22px">reply</span>
@@ -50,10 +51,10 @@ export default {
         formatTime() {
             return new Date(this.email.sentAt).toLocaleTimeString('he-il')
         },
-        isStarred() {
-            console.log('isStarred()');
-            return this.email.isStarred
-        }
+        // isStarred() {
+        //     console.log('isStarred()');
+        //     return this.email.isStarred
+        // }
     },
     watch: {
         // '$route.params.email': {

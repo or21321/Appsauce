@@ -3,6 +3,7 @@ import emailDetails from "../pages/email-details.js"
 import { eventBus } from "../../../services/event-bus-service.js"
 import { showMsg } from "../../../services/event-bus-service.js"
 import { emailService } from "../services/email-service.js"
+import { updateEmailsStatus } from "../../../services/event-bus-service.js"
 
 export default {
     template: `
@@ -29,6 +30,7 @@ export default {
         console.log('email-LIST CREATED!, loadEmails()')
         // this.loadEmails()
         eventBus.$on('filtered', this.filter)
+        eventBus.$on('toggleEmailStarred', this.toggleEmailStarred)
     },
     destroyed() {
         console.log('email-LIST DESTROYED');
@@ -84,9 +86,19 @@ export default {
             emailService.query()
                 .then(emails => {
                     if (this.isStarredList) emails = this.filterListByStarred(emails)
+
+                    if (!emails || emails.length === 0) {
+                        const msg = {
+                            txt: 'Dont have any starred emails',
+                            type: 'error'
+                        }
+                        this.$router.push('/email/inbox')
+                        return showMsg(msg)
+                    }
                     this.emails = emails
                     console.log('from email-LIST, loadEmails returns:', emails);
-                    this.$emit('inboxSize', emails.length)
+                    if (this.$route.path === '/email/inbox') this.$emit('inboxSize', emails.length)
+                    updateEmailsStatus()
                 })
         },
         loadSentEmails() {
@@ -118,8 +130,30 @@ export default {
                         type: 'success'
                     }
                     showMsg(msg)
+                    eventBus.$emit('emailRemoved')
                 })
         },
+        toggleEmailStarred(emailId) {
+            // console.log('markAsStar');
+            emailService.toggleEmailStarred(emailId)
+                .then(email => {
+                    if (email.isStarred) {
+                        const msg = {
+                            txt: 'Email starred',
+                            type: 'success'
+                        }
+                        showMsg(msg)
+                    }
+                    else {
+                        const msg = {
+                            txt: 'Email unstarred',
+                            type: 'success'
+                        }
+                        showMsg(msg)
+                    }
+                    this.email = email
+                })
+        }
     },
     watch: {
         '$route': {
