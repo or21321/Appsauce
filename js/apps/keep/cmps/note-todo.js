@@ -48,7 +48,7 @@ export default {
                     list: items
                 },
                 style: {
-                    backgroundColor: "#DADCE0"
+                    backgroundColor: "#efeff1"
                 }
             }
             console.log(newNote)
@@ -62,7 +62,7 @@ export default {
                 list: ''
             },
             style: {
-                backgroundColor: "#DADCE0"
+                backgroundColor: "#efeff1"
             }
         }
     },

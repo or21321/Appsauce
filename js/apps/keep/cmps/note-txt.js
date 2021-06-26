@@ -18,7 +18,7 @@ export default {
                     txt: ''
                 },
                 style: {
-                    backgroundColor: "#DADCE0"
+                    backgroundColor: "#efeff1"
                 }
             }
         }
@@ -35,7 +35,7 @@ export default {
                     txt: ''
                 },
                 style: {
-                    backgroundColor: "#DADCE0"
+                    backgroundColor: "#efeff1"
                 }
             }
         }

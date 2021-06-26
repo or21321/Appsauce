@@ -17,7 +17,7 @@ export default {
                     url: null,
                 },
                 style: {
-                    backgroundColor: "#DADCE0"
+                    backgroundColor: "#efeff1"
                 }
             }
         }
@@ -33,7 +33,7 @@ export default {
                     url: null,
                 },
                 style: {
-                    backgroundColor: "#DADCE0"
+                    backgroundColor: "#efeff1"
                 }
             }
         }

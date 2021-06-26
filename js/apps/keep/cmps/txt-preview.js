@@ -2,7 +2,7 @@ export default {
     props:['note'],
     template:`
     <div >
-        <h3>{{note.data.title}} </h3>
+        <h4>{{note.data.title}} </h4>
         <p>{{note.data.txt}} </p>
     </div>
     `,

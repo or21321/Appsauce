@@ -1,7 +1,7 @@
 .note-compose {
     display: flex;
     margin-top: 20px;
-    width: 600px;
+    min-width: 400px;
     padding: 10px;
     justify-content: space-between;
     align-items: center;
