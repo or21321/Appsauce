@@ -1,0 +1,123 @@
+@font-face {
+    font-family: Gatafa-regular;
+    src: url('../../fonts/Gafata-Regular.ttf');
+}
+
+.homepage {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* background-image: url('../../img/backgrounds/1.jpg');
+    /* background-image: url('../../img/backgrounds/4.jpg'); */
+    /* background-image: url('../../img/backgrounds/3.jpg'); */
+    /* background-image: url('../../img/backgrounds/2.jpg');
+    background-image: url('../../img/backgrounds/7.jpg');
+    /**/
+    background-image: url('../../img/backgrounds/5.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-image: url('../../img/backgrounds/5.jpg'); */
+    /* background- */
+}
+
+.homepage h2 {
+    font-family: Gatafa-regular;
+}
+
+.homepage .main {
+    flex-grow: 1;
+    background-image: url('../../img/svg/todo.svg');
+}
+
+.svg-container {
+    text-align: center;
+    display: grid;
+    position: relative;
+}
+
+.svg-container:hover {
+    cursor: pointer;
+}
+
+.svg-container .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(46, 45, 45);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 1s;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    top: -30px;
+    right: 0;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+
+.svg-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.eyes {
+    animation: blink 3s linear infinite;
+}
+
+.Rolly {
+    animation: RollAround 5s ease-in-out infinite;
+}
+
+.Shaddow {
+    animation: MoveShaddow 5s ease-in-out infinite;
+    position: relative;
+    top: -12px;
+    z-index: -1;
+}
+
+@keyframes blink {
+    0% {
+        transform: scale(1, 1);
+    }
+    42% {
+        transform: scale(1, 1);
+    }
+    45% {
+        transform: scale(1, 0.4) translateY(100px);
+    }
+    48% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes RollAround {
+    0% {
+        transform: translateX(-100px) rotateZ(7deg);
+    }
+    50% {
+        transform: translateX(100px) rotateZ(-7deg);
+    }
+    100% {
+        transform: translateX(-100px) rotateZ(7deg);
+    }
+}
+
+@keyframes MoveShaddow {
+    0% {
+        transform: translateX(-120px);
+    }
+    50% {
+        transform: translateX(120px);
+    }
+    100% {
+        transform: translateX(-120px);
+    }
+}

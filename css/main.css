@@ -7,6 +7,7 @@
 @import url('./apps/keep/cmps/keep-preview.css');
 @import url('./cmps/user-msg.css');
 @import url('./cmps/app-header.css');
+@import url('./pages/homepage.css');
 /* @import url('./apps/keep/cmps/keep-list.css'); */
 
 * {
@@ -70,22 +71,3 @@ body {
     min-height: 100%;
 }
 
-.homepage {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.homepage .header {
-    /* background-color: lightyellow; */
-}
-
-.homepage .main {
-    flex-grow: 1;
-}
-
-.homepage .footer {
-    /* background-color: lightsteelblue; */
-}

@@ -3,11 +3,15 @@
     border-radius: 50%;
     color: #5f6368;
     margin-right: 30px;
-    /* position: absolute; */
-    /* top: 10px; */
-    /* right: 10px; */
-    position: relative;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.25rem;
 }
+
+/* .svg-container:hover .app-nav {
+    background-color: tomato;
+} */
 
 .app-nav:hover {}
 
@@ -23,22 +27,22 @@
     height: 400px;
     width: 300px;
     position: absolute;
-    bottom: -405px;
+    bottom: -410px;
     left: -235px;
     border-radius: 10px;
-    box-shadow: 0px 0px 9px 1px #B5B5B5;
+    box-shadow: 0px 0px 9px .5px #B5B5B5;
     display: flex;
     justify-content: space-around;
     padding: 15px;
+    z-index: 1;
 }
-
 
 .email img, .keep img {
     width: 50px;
     height: 50px;
 }
 
-.email, .keep { 
+.email, .keep {
     padding: 17.5px;
     height: fit-content;
     border-radius: 7px;

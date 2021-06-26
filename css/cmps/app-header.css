@@ -16,6 +16,8 @@
     border-bottom: 1px solid #f1f3f4;
     padding: 8px;
     margin-inline-start: 3px;
+    position: relative;
+    height: 66px;
 }
 
 .email-header-logo {
