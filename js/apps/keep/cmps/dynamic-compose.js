@@ -1,5 +1,8 @@
+//how to not fire event when moving from one input to another to add title
+
 import noteTxt from './note-txt.js'
 import noteImg from './note-img.js'
+import noteTodo from './note-todo.js'
 
 export default {
     template: `
@@ -11,53 +14,14 @@ export default {
             <div>
                 <button @click="setCmp('noteTxt')">txt</button>
                 <button @click="setCmp('noteImg')">img</button>
+                <button @click="setCmp('noteTodo')">todo</button>
 
             </div>
     </div>
     `,
-//  :data="cmpData" 
     data() {
         return {
-            cmps: [
-                {
-                    type: 'noteTxt',
-                    isPinned: true,
-                    data: {
-                        txt: "Fullstack Me Baby!"
-                    },
-                    style: {
-                        backgroundColor: "#00d"
-                    }
-                },
-                {
-                    type: 'noteImg',
-                    data: {
-                        url: "http://some-img/me",
-                        title: "Me playing Mi"
-                    },
-                    style: {
-                        backgroundColor: "#00d"
-                    }
-                },
-                {
-                    type: 'noteTodos',
-                    data: {
-                        label: "How was it:",
-                        todos: [
-                            { txt: "Do that", doneAt: null },
-                            { txt: "Do this", doneAt: 187111111 }
-                        ]
-                    },
-                    style: {
-                        backgroundColor: "#00d"
-                    }
-
-                }
-            ],
-
             cmpType: 'noteTxt',
-            // cmpData: null
-
         }
     },
     methods: {
@@ -82,5 +46,6 @@ export default {
     components: {
         noteTxt,
         noteImg,
+        noteTodo
     }
 }

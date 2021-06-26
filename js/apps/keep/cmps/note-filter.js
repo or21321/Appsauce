@@ -1,25 +1,27 @@
+//search by title
+import { eventBus } from "../../../services/event-bus-service.js"
 
 export default {
     template: `
     <section class="note-filter">
-        <!-- <form @submit.prevent="filter"> -->
-                <input @change="filter" v-model="filterBy.txt" type="text" placeholder="Search...">
-        <!-- </form> -->
-       
+        <input @input="filter" v-model="filterBy.title" type="text" placeholder="Search...">       
     </section>
     `,
     data() {
         return {
             filterBy: {
-                txt: '',
+                title: '',
             },
 
         };
     },
     methods: {
         filter() {
-            this.$emit('filtered', { ...this.filterBy });
+            console.log(this.filterBy)
+            eventBus.$emit('filtered', { ...this.filterBy })
+            
         }
     },
+
 
 };

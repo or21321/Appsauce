@@ -1,24 +1,23 @@
 import noteFilter from '../cmps/note-filter.js'
-// import noteCompose from '../cmps/note-compose.js'
 import noteList from '../cmps/note-list.js'
-import noteEdit from '../cmps/note-edit.js'
+import dynamicEdit from '../cmps/dynamic-edit.js'
 import dynamicCompose from '../cmps/dynamic-compose.js'
 import { keepService } from '../services/keep-service.js';
+import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
     template: `
     <section class="keep-app">
-        <header class="keep-header">
+        <!-- <header class="keep-header">
             <button class="menu">Menu</button>
             <note-filter @filtered="setFilter"></note-filter>
             <div>LOGO</div>
-        </header>
+        </header> -->
         <section class="main-content">
-            <!-- <note-compose @composed="save"></note-compose> -->
             <dynamic-compose @composed="save"></dynamic-compose>
             <note-list :notes="notesToShow" @removed="removeNote" @selected="selectNote"></note-list>
-            <note-edit v-if="note" :note="note" @closed="closeModal" @updated="save"></note-edit>
-</section>
+            <dynamic-edit v-if="note" :note="note" @close="closeModal" @updated="save" :style="{ 'background-color': note.style.backgroundColor}"></dynamic-edit>
+        </section>
     </section>
     `,
     data() {
@@ -67,12 +66,13 @@ export default {
     },
     computed: {
         notesToShow() {
-            console.log(this.notes)
             if (!this.filterBy) return this.notes;
-            const searchTerm = this.filterBy.txt.toLowerCase();
+            const searchTerm = this.filterBy.title.toLowerCase();
+            console.log(this.filterBy.title)
            
             const notesToShow = this.notes.filter(note => {
-                return (note.data.txt.toLowerCase().includes(searchTerm))
+                console.log(note.data.title)
+                return (note.data.title.toLowerCase().includes(searchTerm))
             });
             return notesToShow;
         }
@@ -80,14 +80,15 @@ export default {
 
     created() {
         this.loadNotes()
+        eventBus.$emit('setAppFilter','keep')
+        eventBus.$on('filtered',this.setFilter)
     },
 
 
     components: {
         noteFilter,
-        // noteCompose,
         noteList,
-        noteEdit,
+        dynamicEdit,
         dynamicCompose
     }
 };

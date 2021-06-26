@@ -3,7 +3,7 @@
 @import url('./apps/keep/cmps/note-edit.css');
 @import url('./apps/keep/pages/keep-app.css');
 @import url('./apps/keep/cmps/keep-compose.css');
-/* @import url('./apps/keep/cmps/keep-list.css'); */
+@import url('./apps/keep/cmps/keep-preview.css');
 
 * {
     box-sizing: border-box;

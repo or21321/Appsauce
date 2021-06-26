@@ -18,7 +18,7 @@ export default {
                     <!-- </p> -->
                 </div>
                 <email-filter v-if="appFilter.email" />
-                <!-- </note-filter v-if="appFilter.keep"> -->
+                <note-filter v-if="appFilter.keep"/>
                 <div class="email-nav">
                 ☰
                     <!-- need to have nav comp here -->

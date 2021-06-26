@@ -1,9 +1,10 @@
 export default {
     template: `
      <div class="note-img">
-        <form @change.prevent="reportVal">
-        <input  type="text" v-model="note.data.url" placeholder="Enter image URL...">
-        <input  type="text" v-model="note.data.title" placeholder="Enter a title...">
+        <form @submit.prevent="reportVal">
+            <input  type="text" v-model="note.data.title" placeholder="Enter a title...">
+            <input  type="text" v-model="note.data.url" placeholder="Enter image URL...">
+            <button hidden></button>
         </form>
     </div>
     `,
@@ -12,11 +13,11 @@ export default {
             note: {
                 type: 'noteImg',
                 data: {
+                    title: null,
                     url: null,
-                    txt: null
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    backgroundColor: "#DADCE0"
                 }
             }
         }
@@ -25,6 +26,16 @@ export default {
         reportVal() {
             console.log(this.note)
             this.$emit('setInput', this.note)
+            this.note = {
+                type: 'noteImg',
+                data: {
+                    txt: null,
+                    url: null,
+                },
+                style: {
+                    backgroundColor: "#DADCE0"
+                }
+            }
         }
     }
 }

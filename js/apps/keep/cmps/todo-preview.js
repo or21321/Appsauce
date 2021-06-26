@@ -2,24 +2,22 @@ export default {
     props: ['note'],
     template: `
     <div>
-    {{listItems}}
+        <h3>{{note.data.title}}</h3>
+        <ul class="todo-list">
+            <li v-for="item in note.data.list" class="todo-item">
+                <input type="checkbox" id="item.txt" name="item.txt">
+                <label for="item.txt">{{item.txt}}</label>
+            </li>
+        </ul>
     </div>
-
    
     `,
 
-    data() {
-
-    },
-
     computed: {
-        listItems() {
-            const items = this.note.data.list.split(',')
-            console.log(item)
-            return items
-        }
+
     }
-
-
 }
+
+
+
 

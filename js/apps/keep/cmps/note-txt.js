@@ -1,7 +1,11 @@
 export default {
     template: `
     <div class="note-txt">
-    <input @change="reportVal" type="text" v-model="note.data.txt" placeholder="Write your note...">
+        <form @submit.prevent="reportVal" >
+            <input type="text" v-model="note.data.title" placeholder="Enter note title..">
+            <input type="text" v-model="note.data.txt" placeholder="Write your note...">
+            <button hidden></button>
+        </form>
     </div>
     `,
     data() {
@@ -10,10 +14,11 @@ export default {
                 type: 'noteTxt',
                 isPinned: false,
                 data: {
+                    title: '',
                     txt: ''
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    backgroundColor: "#DADCE0"
                 }
             }
         }
@@ -22,6 +27,17 @@ export default {
         reportVal() {
             console.log(this.note)
             this.$emit('setInput', this.note)
+            this.note = {
+                type: 'noteTxt',
+                isPinned: false,
+                data: {
+                    title: '',
+                    txt: ''
+                },
+                style: {
+                    backgroundColor: "#DADCE0"
+                }
+            }
         }
     }
 }
