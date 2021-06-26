@@ -1,4 +1,5 @@
 @import url('../cmps/email-header.css');
+@import url('../cmps/email-status.scss');
 @font-face {
     font-family: roboto;
     src: url('../../../../fonts/Roboto-Regular.ttf');

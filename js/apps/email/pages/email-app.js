@@ -35,13 +35,17 @@ export default {
                                 <span class="material-icons" style="font-size: 22px">drafts</span><span>Drafts</span>
                             </div>
                         </div >
+                        <email-status 
+                        :percentage="50"
+                        :label="'Read'"
+                        ></email-status>
                     </div>
                         <router-view @inboxSize="setInboxSize"></router-view>
-                        <email-status></email-status>
                 </div>
                 <!-- <div class="email-footer">
                     <span>Cofferights</span>
                 </div> -->
+
             </section>
             `,
     components: {
