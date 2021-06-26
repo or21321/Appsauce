@@ -3,6 +3,7 @@ import emailList from "../cmps/email-list.js"
 import { emailService } from "../services/email-service.js"
 import { eventBus } from "../../../services/event-bus-service.js"
 import emailStatus from "../cmps/email-status.js"
+// import progressBar from "../cmps/progress-bar.js"
 
 export default {
     template: `
@@ -35,10 +36,8 @@ export default {
                                 <span class="material-icons" style="font-size: 22px">drafts</span><span>Drafts</span>
                             </div>
                         </div >
-                        <email-status 
-                        :percentage="50"
-                        :label="'Read'"
-                        ></email-status>
+                        <email-status></email-status>
+                        <!-- <progress-bar :percentage="100" :label="'Read emails'"></progress-bar> -->
                     </div>
                         <router-view @inboxSize="setInboxSize"></router-view>
                 </div>
@@ -49,7 +48,8 @@ export default {
             </section>
             `,
     components: {
-        emailStatus
+        emailStatus,
+        // progressBar
     },
     data() {
         return {

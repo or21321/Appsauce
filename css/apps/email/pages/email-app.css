@@ -205,6 +205,10 @@
    
 } */
 
+.email-features {
+    margin-bottom: 100px;
+}
+
 .email-features>* {
     padding: 3px;
     border-top-right-radius: 15px;
@@ -346,6 +350,7 @@
     width: 80%;
     height: 80%;
     margin: auto;
+    white-space: pre-line;
 }
 
 .email-details .details-features {
