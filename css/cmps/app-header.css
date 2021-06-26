@@ -18,6 +18,8 @@
     margin-inline-start: 3px;
     position: relative;
     height: 66px;
+    white-space: nowrap;
+
 }
 
 .email-header-logo {

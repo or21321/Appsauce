@@ -6,3 +6,31 @@ h1, h2, h3, h4, h5, body, p, ul {
 button:hover {
     cursor: pointer;
 }
+
+textarea {
+    resize: none;
+  }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+::-webkit-scrollbar-track:hover {
+    background-color: rgb(228, 228, 228);
+}
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #cccccc;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b8b8b;
+  }
+  

@@ -1,5 +1,7 @@
+import { showNavManu } from "../services/event-bus-service.js"
+
 export default {
-    template: `
+  template: `
         <section class="homepage app-main">
                 <h2>An appsus a day, keeps the failures away.</h2>
                 <!-- router links -->
@@ -13,7 +15,7 @@ export default {
                     <div class="book-app-link"></div>
                 </div> -->
 
-                <div class="svg-container">
+                <div @click="showNavMenu"  class="svg-container">
                 <span class="tooltip-text">Go to see my apps</span>
                 <!-- <span class="tooltip-text">Why am i here?</span> -->
   <svg class="Rolly" width="295" height="305" viewBox="0 0 295 305" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,10 +71,16 @@ export default {
   </div>
         </section>
     `,
-    data() {
-        return {
+  data() {
+    return {
 
-        }
-    },
+    }
+  },
+  methods: {
+    showNavMenu() {
+      console.log('showNavMenu');
+      showNavManu()
+    }
+  },
 
 }

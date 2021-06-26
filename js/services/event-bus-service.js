@@ -9,3 +9,8 @@ export function updateEmailsStatus() {
     console.log('updateEmailsStatus()');
     eventBus.$emit('updateEmailsStatus')
 }
+
+export function showNavManu() {
+    console.log('from eventBus, showNavMenu()');
+    eventBus.$emit('showNav-Menu')
+}
