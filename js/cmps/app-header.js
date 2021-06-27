@@ -32,9 +32,9 @@ export default {
         return {
             appFilter: {
                 email: false,
-                keep: false,
-                notHompage: true
-            }
+                keep: false
+            },
+            notHomepage: true
         }
     },
     components: {
@@ -73,10 +73,10 @@ export default {
                 if (this.$route.path === '/') {
                     this.appFilter.email = false
                     this.appFilter.keep = false
-                    this.notHompage = false
+                    this.notHomepage = false
                 }
-                else {  
-                    this.notHompage = true
+                else {
+                    this.notHomepage = true
                 }
             }
         }

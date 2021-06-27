@@ -28,7 +28,7 @@ export default {
             txt = txt.splice(0, 12)
 
             const txtToShow = txt.join(' ')
-            console.log('from long-TEXT, txtToShow', txtToShow);
+            // console.log('from long-TEXT, txtToShow', txtToShow);
             return txtToShow + '...'
         },
     },

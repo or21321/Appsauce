@@ -70,6 +70,9 @@ body {
 /* Tablet/Mobile */
 
 @media (min-width: 0px) {
+    .email-preview>* {
+        justify-content: center;
+    }
     body {
         min-width: 350px;
     }
@@ -162,7 +165,7 @@ body {
         bottom: 0px;
         height: fit-content;
     }
-    .btn-menu:hover {   
+    .btn-menu:hover {
         background-color: #cccc;
     }
 }
@@ -181,6 +184,9 @@ body {
 /* Desktop */
 
 @media (min-width: 950px) {
+    .email-main ul .email-preview:first-child {
+        margin-top: 70px;
+    }
     .email-features-bar {
         position: relative;
         overflow: visible;
@@ -200,5 +206,13 @@ body {
     .email-preview span {
         font-size: .875rem;
         font-weight: 400;
+    }
+}
+
+/* Wide-screen */
+
+@media (min-width: 1550px) {
+    .email-preview>* {
+        justify-content: flex-start;
     }
 }

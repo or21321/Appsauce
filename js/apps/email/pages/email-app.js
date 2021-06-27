@@ -11,7 +11,7 @@ export default {
                 <!-- <email-header></email-header> -->
                 
                 
-                <div class="email-main " v-bind:class="{ open: isMenuOpen }">
+                <div class="email-main" v-bind:class="{ open: isMenuOpen }">
                     <div class="email-features-bar">
 
                         <div class="email-compose-btn" @click="toggleComposeModal">
