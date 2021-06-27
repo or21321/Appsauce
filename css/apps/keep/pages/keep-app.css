@@ -1,10 +1,10 @@
-.keep-header{
+/* .keep-header{
     display: flex;
     height: 65px;
     border-bottom: 2px solid #DADCE0;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 .main-content{
     display: flex;

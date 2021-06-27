@@ -1,7 +1,7 @@
 // import emailHeader from "../cmps/email-header.js"
 import emailList from "../cmps/email-list.js"
 import { emailService } from "../services/email-service.js"
-import { eventBus } from "../../../services/event-bus-service.js"
+import { eventBus, showMsg } from "../../../services/event-bus-service.js"
 import emailStatus from "../cmps/email-status.js"
 import emailCompose from "../cmps/email-compose.js"
 
@@ -33,7 +33,7 @@ export default {
                             <div @click="goToSent">
                                 <span class="material-icons" style="font-size: 22px">send</span><span>Sent</span>
                             </div>
-                            <div>
+                            <div @click="showMsgMaintenance">
                                 <span class="material-icons" style="font-size: 22px">drafts</span><span>Drafts</span>
                             </div>
                         </div >
@@ -75,6 +75,13 @@ export default {
     computed: {
     },
     methods: {
+        showMsgMaintenance() {
+            const msg = {   
+                txt: 'We are sorry.. Drafts is under maintenance at the moment',
+                type: 'error'
+            }
+            showMsg(msg)
+        },
         toggleFeaturesMenu() {
             console.log('hey');
             this.isMenuOpen = !this.isMenuOpen

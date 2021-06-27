@@ -37,7 +37,6 @@ export default {
     data() {
         return {
             showBody: false,
-            // sent: false
         }
     },
     components: {
@@ -45,7 +44,6 @@ export default {
     },
     created() {
         console.log('email-PREVIEW CREATED!, email:', this.email);
-        console.log('from PREVIEW, isSentListOn', this.isSentListOn);
     },
     destroyed() {
         console.log('email-PREVIEW DESTROYED');
@@ -54,17 +52,6 @@ export default {
         formatDate() {
             return new Date(this.email.sentAt).toLocaleDateString('he-il')
         },
-        // bodyTo() {
-        //     let description = this.book.description
-        //     description = description.split(' ')
-
-        //     if (this.showMoreDesc || description.length <= 10) return this.book.description
-
-        //     description = description.splice(0, 10)
-
-        //     const descriptionToShow = description.join(' ')
-        //     return descriptionToShow + '...'
-        // },
     },
     methods: {
         goToEmailDetails() {
