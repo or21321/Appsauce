@@ -39,12 +39,8 @@ export default {
         emailsToShow() {
             if (!this.filterBy) return this.emails
 
-            // if (this.filterBy.priceMax === '') this.filterBy.priceMax = Infinity
-            // if (this.filterBy.priceMin === '') this.filterBy.priceMin = 0
-
             const emailsToDisplay = this.emails.filter(email => {
                 return (
-                    // a shorter way?
 
                     email.sentBy.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
                     this.filterBy.isRead === 'all' ||
@@ -64,7 +60,6 @@ export default {
                     new Date(email.sentAt).toLocaleDateString('he-il').includes(this.filterBy.txt.toLowerCase()) &&
                     email.isRead === this.filterBy.isRead
                 )
-                // if (this.isStarredList) return this.
             })
             console.log('emailstoDisplay', emailsToDisplay);
             return emailsToDisplay
@@ -73,11 +68,8 @@ export default {
     methods: {
         filter(filterBy) {
             console.log('from list, filterBy', filterBy);
-            // is there a way to just set boolean value on the select? o.O
             if (!filterBy.isRead) filterBy.isRead = 'all'
             this.filterBy = filterBy
-            // if (filterBy.isRead === 'read') this.filterBy.isRead = 'read'
-            // if (filterBy.isRead === 'unread') this.filterBy.isRead = 'unread'
         },
         showEmailDetails() {
             console.log('showEmailDetails from book-list');
@@ -111,7 +103,6 @@ export default {
                 .catch(err => {
                     console.log(err);
                     showMsg(err)
-                    // this.$router.push('/email/inbox')
                 })
         },
         filterListByStarred(emails) {
@@ -131,11 +122,10 @@ export default {
                     }
                     updateEmailsStatus()
                     showMsg(msg)
-                    eventBus.$emit('emailRemoved')
+                    // eventBus.$emit('emailRemoved')
                 })
         },
         toggleEmailStarred(emailId) {
-            // console.log('markAsStar');
             emailService.toggleEmailStarred(emailId)
                 .then(email => {
                     if (email.isStarred) {
@@ -160,7 +150,6 @@ export default {
         '$route': {
             immediate: true,
             handler() {
-                // ?Corret way, or should i make it different comps, or send param instead?
                 console.log('this.$route.path, from list', this.$route.path);
                 switch (this.$route.path) {
                     case '/email/inbox':
@@ -181,22 +170,6 @@ export default {
                         this.loadSentEmails()
                         break
                 }
-                // if (this.$route.path === '/email/inbox/starred') {
-                //     console.log('STARRED');
-                //     this.isStarredList = true
-                //     this.loadEmails()
-                // }
-                // else if (this.$route.path === 'email/inbox/sent') {
-                //     this.isStarredList = false
-                //     console.log('emailService.loadSentEmails()');
-                // }
-                // else {
-                //     console.log('LIST');
-                //     this.isStarredList = false
-                //     this.loadEmails()
-                // }
-                // if (!this.emails) this.$router.push('/emails')
-                // if (!this.emails) eventBus.$emit('')
             },
         },
     }

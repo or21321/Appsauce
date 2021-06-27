@@ -1,7 +1,7 @@
 import { eventBus } from "../../../services/event-bus-service.js"
 import { emailService } from "../services/email-service.js"
 import progressBar from "./progress-bar.js"
-
+import { setInboxSize } from "../../../services/event-bus-service.js"
 
 export default {
     // props: {
@@ -30,7 +30,7 @@ export default {
     computed: {
         readEmailsPercentage() {
             if (!this.emailsLength || !this.readEmails) return 0
-            return Math.floor((this.readEmails / this.emailsLength ) * 100)
+            return Math.floor((this.readEmails / this.emailsLength) * 100)
         }
     },
     methods: {
@@ -59,6 +59,7 @@ export default {
             immediate: true,
             handler() {
                 console.log('STATUS WATCH, emailsLength', this.emailsLength);
+                if (this.emailsLength) setInboxSize(this.emailsLength)
             }
         }
     }

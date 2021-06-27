@@ -64,10 +64,11 @@ export default {
     created() {
         console.log('email-APP CREATED!');
         eventBus.$emit('setAppFilter', 'email')
-        eventBus.$on('emailRemoved', this.setInboxSize)
+        // eventBus.$on('emailRemoved', this.setInboxSize)
         eventBus.$on('closeComposeModal', this.toggleComposeModal)
         eventBus.$on('toggleComposeModal', this.toggleComposeModal)
         eventBus.$on('toggleEmailFeaturesMenu', this.toggleFeaturesMenu)
+        eventBus.$on('setInbox-Size', this.setInboxSize)
     },
     destroyed() {
         console.log('email-APP DESTROYED');
@@ -76,7 +77,7 @@ export default {
     },
     methods: {
         showMsgMaintenance() {
-            const msg = {   
+            const msg = {
                 txt: 'We are sorry.. Drafts is under maintenance at the moment',
                 type: 'error'
             }
@@ -97,6 +98,9 @@ export default {
             console.log('INBOX SIZE', emailsLength);
             this.inboxSize = emailsLength
         },
+        // setInboxSize() {
+
+        // },
         goToInbox() {
             this.$router.push('/email/inbox')
         },

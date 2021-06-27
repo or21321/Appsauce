@@ -14,3 +14,8 @@ export function showNavManu() {
     console.log('from eventBus, showNavMenu()');
     eventBus.$emit('showNav-Menu')
 }
+
+export function setInboxSize(size) {    
+    console.log('from eventBus, setInboxSize()');
+    eventBus.$emit('setInbox-Size', size)
+}
