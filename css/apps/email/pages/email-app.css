@@ -456,6 +456,10 @@
     /* background-color: #5f6368; */
 }
 
+.icon:first-child:hover {   
+    background-color: #ffffff;
+}
+
 img.material-icons   {
     background-color: unset;
 }

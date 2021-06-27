@@ -12,10 +12,10 @@ export default {
                 <p>{{formatDate}}</p>
                 <!-- <p>{{formatDate}}, {{formatTime}}</p> -->
                 <div class="details-features">
-                    <div class="icon" @click="saveToKeepNote">
+                    <div class="icon" @click="saveToKeepNotes">
                         <!-- <span class="material-icons" style="font-size: 22px">check_box</span> -->
                         <img class="material-icons" src="./icons/check_box.png">
-                        <span class="tooltip-text">Note</span>
+                        <span class="tooltip-text">Save as a note</span>
                     </div>
                     <div class="icon" @click="toggleEmailStarred">
                         <span v-if="email.isStarred" class="material-icons" style="font-size: 22px; color:#f7cb4d">star</span>
@@ -98,6 +98,12 @@ export default {
         }
     },
     methods: {
+        saveToKeepNotes() {
+            // console.log('hey');
+            console.log('saveToKeepNotes()', this.email.id);
+            this.$router.push({ path: '/keep', query: { emailId: this.email.id}})
+            // router.push({ path: 'register', query: { plan: 'private' } })
+        },
         reply() {
             console.log('REPLY');
             // this.$router.push('/email/compose/' + this.email.id)

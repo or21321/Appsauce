@@ -4,6 +4,7 @@ import dynamicEdit from '../cmps/dynamic-edit.js'
 import dynamicCompose from '../cmps/dynamic-compose.js'
 import { keepService } from '../services/keep-service.js';
 import { eventBus } from '../../../services/event-bus-service.js';
+import { emailService } from '../../email/services/email-service.js';
 
 export default {
     template: `
@@ -38,18 +39,19 @@ export default {
         },
 
         save(note) {
+            console.log('note', note);
             keepService.saveNote(note)
-            .then(()=>{
-                this.loadNotes()
-            })
+                .then(() => {
+                    this.loadNotes()
+                })
 
         },
 
         removeNote(note) {
             keepService.removeNote(note.id)
-            .then(()=>{
-                this.loadNotes()
-            })
+                .then(() => {
+                    this.loadNotes()
+                })
         },
 
         selectNote(note) {
@@ -58,14 +60,23 @@ export default {
 
         closeModal() {
             this.note = null
-        }
+        },
+        formattedTxt(txt) {
+            txt = txt.split(' ')
+
+            txt = txt.splice(0, 20)
+
+            const txtToShow = txt.join(' ')
+
+            return txtToShow 
+        },
     },
     computed: {
         notesToShow() {
             if (!this.filterBy) return this.notes;
             const searchTerm = this.filterBy.title.toLowerCase();
             console.log(this.filterBy.title)
-           
+
             const notesToShow = this.notes.filter(note => {
                 console.log(note.data.title)
                 return (note.data.title.toLowerCase().includes(searchTerm))
@@ -76,8 +87,8 @@ export default {
 
     created() {
         this.loadNotes()
-        eventBus.$emit('setAppFilter','keep')
-        eventBus.$on('filtered',this.setFilter)
+        eventBus.$emit('setAppFilter', 'keep')
+        eventBus.$on('filtered', this.setFilter)
     },
 
 
@@ -86,5 +97,31 @@ export default {
         noteList,
         dynamicEdit,
         dynamicCompose
+    },
+    watch: {
+        '$route.path.query.emailId': {
+            immediate: true,
+            handler() {
+                if (this.$route.query.emailId) {
+                    console.log('from keep', this.$route.query.emailId);
+                    emailService.getById(this.$route.query.emailId)
+                        .then(email => {
+                            email.subject = this.formattedTxt(email.subject)
+                            const newNote = {
+                                type: 'noteTxt',
+                                isPinned: false,
+                                data: {
+                                    title: `${email.subject}`,
+                                    txt: `${email.body}`
+                                },
+                                style: {
+                                    backgroundColor: "#efeff1"
+                                }
+                            }
+                            this.save(newNote)
+                        })
+                }
+            }
+        }
     }
 };
