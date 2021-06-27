@@ -73,7 +73,7 @@ export default {
                 if (this.$route.path === '/') {
                     this.appFilter.email = false
                     this.appFilter.keep = false
-                    // this.notHompage = false
+                    this.notHompage = false
                 }
                 else {  
                     this.notHompage = true
