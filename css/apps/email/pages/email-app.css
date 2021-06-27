@@ -3,7 +3,7 @@
 @import url('../cmps/email-status.scss');
 @font-face {
     font-family: roboto-Regular;
-    src: url('./fonts/Roboto-Regular.ttf');
+    src: url('../../../../fonts/Roboto-Regular.ttf');
 }
 
 @font-face {
@@ -454,6 +454,10 @@
     cursor: pointer;
     background-color: #ececec;
     /* background-color: #5f6368; */
+}
+
+img.material-icons   {
+    background-color: unset;
 }
 
 /* Tooltip text */

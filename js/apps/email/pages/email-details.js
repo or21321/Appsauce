@@ -12,6 +12,11 @@ export default {
                 <p>{{formatDate}}</p>
                 <!-- <p>{{formatDate}}, {{formatTime}}</p> -->
                 <div class="details-features">
+                    <div class="icon" @click="saveToKeepNote">
+                        <!-- <span class="material-icons" style="font-size: 22px">check_box</span> -->
+                        <img class="material-icons" src="./icons/check_box.png">
+                        <span class="tooltip-text">Note</span>
+                    </div>
                     <div class="icon" @click="toggleEmailStarred">
                         <span v-if="email.isStarred" class="material-icons" style="font-size: 22px; color:#f7cb4d">star</span>
                         <span v-else class="material-icons" style="font-size: 22px">star_border</span>
