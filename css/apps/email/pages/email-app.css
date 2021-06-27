@@ -263,7 +263,7 @@
     margin-bottom: 100px;
 }
 
-.email-features>* {
+.email-features>*:not(.btn-menu) {
     padding: 3px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -303,8 +303,24 @@
     display: flex;
     justify-content: space-between;
     padding: 8px;
+    max-height: 56px;
     /* border-radius: 10px; */
     box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
+}
+
+/* .email-preview span { */
+    /* font-size: 1.25vw; */
+    
+/* } */
+
+.email-preview span.material-icons {    
+    /* font-size: 3.5vw; */
+    font-size: 22px;
+}
+
+.icon span.material-icons{ 
+    font-size: 22px;
+    /* font-size: 3.5vw; */
 }
 
 .email-preview:hover {
@@ -347,6 +363,7 @@
     opacity: 0;
     transition: opacity .15s;
     padding: 7px;
+    font-size: 3.5vw;
 }
 
 .delete-preview-btn:hover {
@@ -431,9 +448,10 @@
     position: relative;
     display: inline-block;
     /* border-bottom: 1px dotted black; If you want dots under the hoverable text */
-    padding: 7px;
+    /* padding: 7px; */
     border-radius: 50%;
     color: #5f6368;
+    /* font-size: 1.25vw; */
 }
 
 .icon:hover {

@@ -36,7 +36,12 @@ export default {
             this.closeMsg()
             this.msg = msg;
             this.timeOut = setTimeout(() => {
-                if (this.msg.link) eventBus.$emit('closeComposeModal')
+            if (this.msg.link) {
+                eventBus.$emit('closeComposeModal')
+                // setTimeout(() => {
+                //     this.$router.push('/email/inbox')
+                // }, 4000)
+            }
                 this.msg = null;
                 console.log('done');
             }, 4000);

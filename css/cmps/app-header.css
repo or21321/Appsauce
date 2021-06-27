@@ -17,15 +17,15 @@
     padding: 8px;
     margin-inline-start: 3px;
     position: relative;
-    height: 66px;
+    /* height: 66px; */
     white-space: nowrap;
 
 }
 
 .email-header-logo {
     font-size: 1.4rem;
-    margin-left: 22px;
-    margin-right: 133px;
+    /* margin-left: 22px;
+    margin-right: 133px; */
 }
 
 .email-header-logo:hover {

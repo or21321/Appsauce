@@ -10,7 +10,8 @@ export default {
             <section class="email-app app-main"> 
                 <!-- <email-header></email-header> -->
                 
-                <div class="email-main">
+                
+                <div class="email-main " v-bind:class="{ open: isMenuOpen }">
                     <div class="email-features-bar">
 
                         <div class="email-compose-btn" @click="toggleComposeModal">
@@ -21,7 +22,7 @@ export default {
                                 Compose
                             </div>
                         </div>
-                        <div class="email-features">
+                        <div class="email-features email-nav">
                             <div @click="goToInbox">
                                 <span class="material-icons" style="font-size: 22px">inbox</span>
                                 <span class="inbox-span">Inbox</span><span class="inbox-size">{{inboxSize}}</span>
@@ -56,15 +57,17 @@ export default {
             emails: null,
             inboxSize: null,
             isComposeModalOn: false,
-            emailIdToReply: null
+            emailIdToReply: null,
+            isMenuOpen: false
         }
     },
     created() {
         console.log('email-APP CREATED!');
         eventBus.$emit('setAppFilter', 'email')
         eventBus.$on('emailRemoved', this.setInboxSize)
-        eventBus.$on('closeComposeModal', this.isComposeModalOn = false)
+        eventBus.$on('closeComposeModal', this.toggleComposeModal)
         eventBus.$on('toggleComposeModal', this.toggleComposeModal)
+        eventBus.$on('toggleEmailFeaturesMenu', this.toggleFeaturesMenu)
     },
     destroyed() {
         console.log('email-APP DESTROYED');
@@ -72,6 +75,10 @@ export default {
     computed: {
     },
     methods: {
+        toggleFeaturesMenu() {
+            console.log('hey');
+            this.isMenuOpen = !this.isMenuOpen
+        },
         setInboxSize(emailsLength) {
             if (!emailsLength) {
                 emailService.query()

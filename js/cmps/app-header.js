@@ -6,6 +6,7 @@ import appNav from './app-nav.js'
 export default {
     template: `
            <div class="email-header-container">
+                <button v-if="notHomepage" class="btn-menu" @click="toggleEmailFeaturesMenu">☰</button>
                 <div class="email-header-logo" @click="goToHomepage">
                     <!-- Appsauce -->
                     <!-- <p> -->
@@ -31,7 +32,8 @@ export default {
         return {
             appFilter: {
                 email: false,
-                keep: false
+                keep: false,
+                notHompage: true
             }
         }
     },
@@ -45,6 +47,9 @@ export default {
 
     },
     methods: {
+        toggleEmailFeaturesMenu() {
+            eventBus.$emit('toggleEmailFeaturesMenu')
+        },
         goToHomepage() {
             // eventBus.$emit('loadEmails')
             this.$router.push('/')
@@ -61,13 +66,17 @@ export default {
         },
     },
     watch: {
-        '$route': {
+        '$route.path': {
             immediate: true,
             handler() {
                 console.log('from app-header, $route watcher');
                 if (this.$route.path === '/') {
                     this.appFilter.email = false
                     this.appFilter.keep = false
+                    // this.notHompage = false
+                }
+                else {  
+                    this.notHompage = true
                 }
             }
         }
