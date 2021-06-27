@@ -112,6 +112,7 @@ export default {
             })
         },
         removeEmail(emailId) {
+            if (this.$route.path === '/email/inbox/sent') return
             console.log('deleting..', emailId);
             emailService.removeEmail(emailId)
                 .then(() => {
@@ -122,7 +123,6 @@ export default {
                     }
                     updateEmailsStatus()
                     showMsg(msg)
-                    // eventBus.$emit('emailRemoved')
                 })
         },
         toggleEmailStarred(emailId) {
