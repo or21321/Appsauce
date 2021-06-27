@@ -103,7 +103,7 @@ export default {
             console.log('isNavModalOpen', this.isNavModalOpen);
         },
         goToBooksPage() {
-            window.open("https://or21321.github.io/miss-book/#/book")
+            window.open("https://or21321.github.io/book-app/")
         },
         goToYoutube() {
             window.open("https://youtube.com")
